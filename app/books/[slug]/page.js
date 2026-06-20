@@ -27,28 +27,13 @@ export default async function BookPage({ params }) {
 
             <div className="bg-gray-100 border rounded-xl h-[500px] flex items-center justify-center">
 
-              {book.cover ? (
-                <Image
-                  src={book.cover}
-                  alt={book.englishTitle}
-                  width={350}
-                  height={500}
-                  className="object-contain max-h-full"
-                />
-              ) : (
-                <div className="text-center">
-
-                  <h3 className="font-bold text-xl mb-2">
-                    Book Cover
-                  </h3>
-
-                  <p className="text-gray-500">
-                    Image Coming Soon
-                  </p>
-
-                </div>
-              )}
-
+              <Image
+  src={book.cover || "/covers/placeholder-book.jpg"}
+  alt={book.englishTitle}
+  width={350}
+  height={500}
+  className="object-contain max-h-full"
+/>
             </div>
 
           </div>
@@ -141,21 +126,17 @@ export default async function BookPage({ params }) {
         className="border rounded-xl p-4 bg-gray-50"
       >
 
-        <div className="h-40 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+        <div className="h-40 bg-gray-100 rounded-lg overflow-hidden border mb-4">
 
-          <div className="text-center">
+  <Image
+    src={relatedBook.cover || "/covers/placeholder-book.jpg"}
+    alt={relatedBook.englishTitle}
+    width={160}
+    height={224}
+    className="w-full h-full object-cover"
+  />
 
-            <p className="font-semibold">
-              Cover
-            </p>
-
-            <p className="text-sm text-gray-500">
-              Coming Soon
-            </p>
-
-          </div>
-
-        </div>
+</div>
 
         <h3 className="font-bold mb-2">
           {relatedBook.englishTitle}

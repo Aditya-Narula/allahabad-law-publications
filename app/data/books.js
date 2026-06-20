@@ -9,6 +9,7 @@ export const books = {
     salePrice: 45,
     stock: 10,
     category: "Bare Acts",
+    cover: "/covers/placeholder-book.jpg",
   },
 
   advocatesAct: {
@@ -21,6 +22,7 @@ export const books = {
     salePrice: 150,
     stock: 10,
     category: "Bare Acts",
+    cover: "/covers/placeholder-book.jpg",
   },
 
   arbitrationAct: {
@@ -33,6 +35,7 @@ export const books = {
     salePrice: 100,
     stock: 10,
     category: "Bare Acts",
+    cover: "/covers/placeholder-book.jpg",
   },
 
   armsActExplosives: {
@@ -45,6 +48,7 @@ export const books = {
     salePrice: 95,
     stock: 10,
     category: "Bare Acts",
+    cover: "/covers/placeholder-book.jpg",
   },
 
   armsActRules: {
@@ -57,6 +61,7 @@ export const books = {
     salePrice: 350,
     stock: 10,
     category: "Bare Acts",
+    cover: "/covers/placeholder-book.jpg",
   },
 
   banningDepositSchemes: {
@@ -69,6 +74,7 @@ export const books = {
     salePrice: 115,
     stock: 10,
     category: "Bare Acts",
+    cover: "/covers/placeholder-book.jpg",
   },
 
   bnss: {
@@ -86,7 +92,7 @@ export const books = {
   featured: true,
   newArrival: true,
   isbn: "",
-  cover: "",
+  cover: "/covers/placeholder-book.jpg",
   description:
   "Diglot edition containing the complete text of the Bharatiya Nagarik Suraksha Sanhita, 2023 with updated provisions and legislative changes.",
 },
@@ -106,7 +112,7 @@ export const books = {
   featured: true,
   newArrival: true,
   isbn: "",
-  cover: "",
+  cover: "/covers/placeholder-book.jpg",
   description:
   "Diglot edition containing the complete text of the Bharatiya Nyaya Sanhita, 2023. Designed for advocates, law students, judicial service aspirants and legal professionals.",
 },
@@ -126,7 +132,7 @@ export const books = {
   featured: true,
   newArrival: true,
   isbn: "",
-  cover: "",
+  cover: "/covers/placeholder-book.jpg",
   description:
   "Diglot edition containing the complete text of the Bharatiya Sakshya Adhiniyam, 2023 for legal study and professional reference.",
 },

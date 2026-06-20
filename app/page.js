@@ -126,12 +126,12 @@ const newArrivalBooks = Object.entries(books).filter(
 
   {book.cover ? (
     <Image
-      src={book.cover}
-      alt={book.englishTitle}
-      width={160}
-      height={224}
-      className="w-full h-full object-cover"
-    />
+  src={book.cover || "/covers/placeholder-book.jpg"}
+  alt={book.englishTitle}
+  width={160}
+  height={224}
+  className="w-full h-full object-cover"
+/>
   ) : (
     <div className="w-full md:w-40 h-56 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 border">
 
@@ -226,21 +226,17 @@ const newArrivalBooks = Object.entries(books).filter(
 
           <div className="flex flex-col md:flex-row gap-5">
 
-  <div className="w-full md:w-40 h-56 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 border">
+  <div className="h-40 bg-gray-100 rounded-lg overflow-hidden border mb-4">
 
-    <div className="text-center px-2">
+  <Image
+    src={book.cover || "/covers/placeholder-book.jpg"}
+    alt={book.englishTitle}
+    width={160}
+    height={224}
+    className="w-full h-full object-cover"
+  />
 
-      <p className="font-semibold text-gray-700">
-        Cover
-      </p>
-
-      <p className="text-sm text-gray-500">
-        Coming Soon
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
   <div className="flex-1 min-w-0">
 
