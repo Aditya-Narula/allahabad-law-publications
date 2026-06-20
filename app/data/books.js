@@ -86,7 +86,9 @@ export const books = {
   featured: true,
   newArrival: true,
   isbn: "",
-  cover: ""
+  cover: "",
+  description:
+  "Diglot edition containing the complete text of the Bharatiya Nagarik Suraksha Sanhita, 2023 with updated provisions and legislative changes.",
 },
 
   bns: {
@@ -104,7 +106,9 @@ export const books = {
   featured: true,
   newArrival: true,
   isbn: "",
-  cover: ""
+  cover: "",
+  description:
+  "Diglot edition containing the complete text of the Bharatiya Nyaya Sanhita, 2023. Designed for advocates, law students, judicial service aspirants and legal professionals.",
 },
 
   bsa: {
@@ -122,6 +126,8 @@ export const books = {
   featured: true,
   newArrival: true,
   isbn: "",
-  cover: ""
+  cover: "",
+  description:
+  "Diglot edition containing the complete text of the Bharatiya Sakshya Adhiniyam, 2023 for legal study and professional reference.",
 },
 };
