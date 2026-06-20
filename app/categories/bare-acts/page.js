@@ -2,6 +2,10 @@ import Link from "next/link";
 import { books } from "@/app/data/books";
 
 export default function BareActsPage() {
+  const bareActsBooks = Object.entries(books).filter(
+    ([, book]) => book.category === "Bare Acts"
+  );
+
   return (
     <main className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-6">
@@ -15,14 +19,17 @@ export default function BareActsPage() {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {Object.entries(books).map(([slug, book]) => (
+          {bareActsBooks.map(([slug, book]) => (
             <div
               key={slug}
               className="bg-white rounded-xl shadow-md overflow-hidden"
             >
               <div className="h-64 bg-gray-200 flex items-center justify-center">
                 <div className="text-center">
-                  <p className="font-semibold">Book Cover</p>
+                  <p className="font-semibold">
+                    Book Cover
+                  </p>
+
                   <p className="text-sm text-gray-500">
                     Image Coming Soon
                   </p>
@@ -30,6 +37,7 @@ export default function BareActsPage() {
               </div>
 
               <div className="p-5">
+
                 <h2 className="font-bold text-lg">
                   {book.englishTitle}
                 </h2>
@@ -39,11 +47,13 @@ export default function BareActsPage() {
                 </p>
 
                 <p>
-                  <strong>Author / लेखक:</strong> {book.author}
+                  <strong>Author / लेखक:</strong>{" "}
+                  {book.author}
                 </p>
 
                 <p>
-                  <strong>Edition / संस्करण:</strong> {book.edition}
+                  <strong>Edition / संस्करण:</strong>{" "}
+                  {book.edition}
                 </p>
 
                 <p>
@@ -51,7 +61,8 @@ export default function BareActsPage() {
                 </p>
 
                 <p>
-                  <strong>Sale Price:</strong> ₹{book.salePrice}
+                  <strong>Sale Price:</strong> ₹
+                  {book.salePrice}
                 </p>
 
                 <p className="text-green-600 font-semibold mt-2">
@@ -64,6 +75,7 @@ export default function BareActsPage() {
                 >
                   View Details / विवरण देखें
                 </Link>
+
               </div>
             </div>
           ))}
