@@ -1,5 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
+import { books } from "@/app/data/books";
 export default function Home() {
+  const featuredBooks = Object.entries(books).filter(
+  ([, book]) => book.featured === true
+);
+const newArrivalBooks = Object.entries(books).filter(
+  ([, book]) => book.newArrival === true
+);
   return (
     <main className="min-h-screen bg-white text-gray-900">
      
@@ -103,81 +111,187 @@ export default function Home() {
   judicial aspirants, law students and legal professionals across India.
 </p>
 
-         <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
 
-  <div className="bg-white p-8 rounded-xl shadow-sm border">
-    <h3 className="text-xl font-bold mb-3">
-      Constitution of India
-    </h3>
+  {featuredBooks.map(([slug, book]) => (
 
-    <p className="text-gray-600 mb-2">
-      Diglot Edition (English & Hindi)
+    <div
+  key={slug}
+  className="bg-white rounded-xl shadow-md border p-5 min-w-0"
+>
+
+      <div className="flex flex-col md:flex-row gap-5">
+
+  <div className="w-full md:w-40 h-56 bg-gray-100 rounded-lg overflow-hidden border flex-shrink-0">
+
+  {book.cover ? (
+    <Image
+      src={book.cover}
+      alt={book.englishTitle}
+      width={160}
+      height={224}
+      className="w-full h-full object-cover"
+    />
+  ) : (
+    <div className="w-full md:w-40 h-56 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 border">
+
+  <div className="text-center">
+
+    <p className="font-semibold text-gray-700">
+      Cover
     </p>
 
-    <p className="text-gray-600 mb-2">
-      MRP: ₹650
+    <p className="text-sm text-gray-500">
+      Coming Soon
     </p>
 
-    <p className="text-amber-700 font-bold text-lg">
-      Sale Price: ₹325
-    </p>
-
-    <p className="text-green-600 mt-3">
-      In Stock
-    </p>
   </div>
 
-  <div className="bg-white p-8 rounded-xl shadow-sm border">
-    <h3 className="text-xl font-bold mb-3">
-      Bharatiya Nyaya Sanhita
+</div>
+  )}
+
+</div>
+
+  <div className="flex-1 min-w-0">
+
+    <h3 className="text-lg md:text-xl font-bold mb-2 break-words">
+      {book.englishTitle}
     </h3>
 
-    <p className="text-gray-600 mb-2">
-      Diglot Edition (English & Hindi)
+    <p className="text-amber-700 font-medium mb-4">
+      {book.hindiTitle}
     </p>
 
-    <p className="text-gray-600 mb-2">
-      MRP: ₹400
+    <p className="mb-1">
+      <strong>Author:</strong> {book.author}
     </p>
 
-    <p className="text-amber-700 font-bold text-lg">
-      Sale Price: ₹200
+    <p className="mb-3">
+      <strong>Edition:</strong> {book.edition}
     </p>
 
-    <p className="text-green-600 mt-3">
-      In Stock
-    </p>
-  </div>
+    <hr className="my-3" />
 
-  <div className="bg-white p-8 rounded-xl shadow-sm border">
-    <h3 className="text-xl font-bold mb-3">
-      Bharatiya Nagarik Suraksha Sanhita
-    </h3>
-
-    <p className="text-gray-600 mb-2">
-      Author: R.K. Narula
+    <p className="text-gray-700">
+      MRP: ₹{book.mrp}
     </p>
 
-    <p className="text-gray-600 mb-2">
-      5th Edition • Approx. 950 Pages
+    <p className="text-3xl font-bold text-amber-700 my-2">
+      ₹{book.salePrice}
     </p>
 
-    <p className="text-gray-600 mb-2">
-      MRP: ₹800
+    <p className="text-green-600 font-semibold">
+      In Stock ({book.stock} Available)
     </p>
 
-    <p className="text-amber-700 font-bold text-lg">
-      Sale Price: ₹400
-    </p>
+    <Link
+      href={`/books/${slug}`}
+      className="block mt-5 text-center bg-black text-white py-3 rounded-lg"
+    >
+      View Details
+    </Link>
 
-    <p className="text-green-600 mt-3">
-      In Stock (100 Available)
-    </p>
   </div>
 
 </div>
 
+    </div>
+
+  ))}
+
 </div>
+
+</div>
+</section>
+
+<section className="bg-white py-20">
+  <div className="max-w-6xl mx-auto px-6">
+
+    <h2 className="text-4xl font-bold text-center mb-4">
+      New Arrivals
+    </h2>
+
+    <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+      Explore the latest additions to our legal publication catalogue.
+    </p>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+
+      {newArrivalBooks.map(([slug, book]) => (
+
+        <div
+  key={slug}
+  className="bg-white rounded-xl shadow-md border p-5 min-w-0"
+>
+
+          <div className="flex flex-col md:flex-row gap-5">
+
+  <div className="w-full md:w-40 h-56 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 border">
+
+    <div className="text-center px-2">
+
+      <p className="font-semibold text-gray-700">
+        Cover
+      </p>
+
+      <p className="text-sm text-gray-500">
+        Coming Soon
+      </p>
+
+    </div>
+
+  </div>
+
+  <div className="flex-1 min-w-0">
+
+    <h3 className="text-lg md:text-xl font-bold mb-2 break-words">
+      {book.englishTitle}
+    </h3>
+
+    <p className="text-amber-700 font-medium mb-4">
+      {book.hindiTitle}
+    </p>
+
+    <p className="mb-1">
+      <strong>Author:</strong> {book.author}
+    </p>
+
+    <p className="mb-3">
+      <strong>Edition:</strong> {book.edition}
+    </p>
+
+    <hr className="my-3" />
+
+    <p className="text-gray-700">
+      MRP: ₹{book.mrp}
+    </p>
+
+    <p className="text-3xl font-bold text-amber-700 my-2">
+      ₹{book.salePrice}
+    </p>
+
+    <p className="text-green-600 font-semibold">
+      In Stock ({book.stock} Available)
+    </p>
+
+    <Link
+      href={`/books/${slug}`}
+      className="block mt-5 text-center bg-black text-white py-3 rounded-lg"
+    >
+      View Details
+    </Link>
+
+  </div>
+
+</div>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
 </section>
 
 {/* Why Choose Us */}
