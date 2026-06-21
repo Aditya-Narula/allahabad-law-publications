@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { books } from "@/app/data/books";
 
-export default function BareActsPage() {
-  const bareActsBooks = Object.entries(books).filter(
-    ([, book]) => book.category === "Bare Acts"
-  );
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
+export default function BareActsPage() {
   return (
     <main className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-6">
@@ -15,70 +13,65 @@ export default function BareActsPage() {
         </h1>
 
         <p className="text-center text-gray-600 mb-12">
-          बेयर एक्ट्स
-        </p>
+  Browse {Object.values(books).filter(
+    (book) => book.category === "Bare Acts"
+  ).length} Bare Acts Alphabetically
+</p>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {bareActsBooks.map(([slug, book]) => (
-            <div
-              key={slug}
-              className="bg-white rounded-xl shadow-md overflow-hidden"
-            >
-              <div className="h-64 bg-gray-200 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-semibold">
-                    Book Cover
-                  </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
 
-                  <p className="text-sm text-gray-500">
-                    Image Coming Soon
-                  </p>
-                </div>
-              </div>
+          {letters.map((letter) => {
 
-              <div className="p-5">
+  const count = Object.values(books).filter(
+    (book) =>
+      book.category === "Bare Acts" &&
+      book.letter === letter
+  ).length;
 
-                <h2 className="font-bold text-lg">
-                  {book.englishTitle}
-                </h2>
+  const sampleBooks = Object.values(books)
+    .filter(
+      (book) =>
+        book.category === "Bare Acts" &&
+        book.letter === letter
+    )
+    .slice(0, 3);
 
-                <p className="text-gray-600 mb-4">
-                  {book.hindiTitle}
-                </p>
+  if (count === 0) return null;
 
-                <p>
-                  <strong>Author / लेखक:</strong>{" "}
-                  {book.author}
-                </p>
+  return (
+            <Link
+  key={letter}
+  href={`/categories/bare-acts/${letter.toLowerCase()}`}
+  className="bg-white shadow-md rounded-xl p-8 text-center hover:shadow-lg transition"
+>
 
-                <p>
-                  <strong>Edition / संस्करण:</strong>{" "}
-                  {book.edition}
-                </p>
+  <h2 className="text-5xl font-bold mb-3">
+  {letter}
+</h2>
 
-                <p>
-                  <strong>MRP:</strong> ₹{book.mrp}
-                </p>
+<p className="text-gray-600 mb-4">
+  {count} Books
+</p>
 
-                <p>
-                  <strong>Sale Price:</strong> ₹
-                  {book.salePrice}
-                </p>
+<div className="text-sm text-gray-500 space-y-1">
 
-                <p className="text-green-600 font-semibold mt-2">
-                  In Stock ({book.stock} Available)
-                </p>
+  {sampleBooks.map((book, index) => (
 
-                <Link
-                  href={`/books/${slug}`}
-                  className="block mt-4 text-center bg-black text-white py-2 rounded-lg"
-                >
-                  View Details / विवरण देखें
-                </Link>
+    <p
+  key={index}
+  className="text-left text-sm leading-5"
+>
+  • {book.englishTitle}
+</p>
 
-              </div>
-            </div>
-          ))}
+  ))}
+
+</div>
+
+</Link>
+
+          );
+})}
         </div>
 
       </div>
