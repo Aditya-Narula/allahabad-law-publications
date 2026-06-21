@@ -95,26 +95,47 @@ export const books = {
   cover: "/covers/placeholder-book.jpg",
   description:
   "Diglot edition containing the complete text of the Bharatiya Nagarik Suraksha Sanhita, 2023 with updated provisions and legislative changes.",
+  subject: "Criminal Procedure",
+binding: "Paperback",
+publicationYear: "2026",
 },
 
-  bns: {
+ bns: {
   englishTitle: "The Bharatiya Nyaya Sanhita, 2023",
   hindiTitle: "भारतीय न्याय संहिता, 2023",
+
   author: "R.K. Narula",
+
   edition: "2026 Edition",
+
   pages: 100,
-  mrp: 495,
-  salePrice: 248,
-  stock: 10,
-  category: "Bare Acts",
 
   language: "English & Hindi",
-  featured: true,
-  newArrival: true,
+
+  category: "Bare Acts",
+
+  subject: "Criminal Law",
+
   isbn: "",
-  cover: "/covers/placeholder-book.jpg",
+
+  binding: "Paperback",
+
+  publicationYear: "2026",
+
+  mrp: 495,
+
+  salePrice: 248,
+
+  stock: 10,
+
+  featured: true,
+
+  newArrival: true,
+
+  cover: "",
+
   description:
-  "Diglot edition containing the complete text of the Bharatiya Nyaya Sanhita, 2023. Designed for advocates, law students, judicial service aspirants and legal professionals.",
+    "Diglot edition containing the complete text of the Bharatiya Nyaya Sanhita, 2023. Designed for advocates, law students, judicial service aspirants and legal professionals."
 },
 
   bsa: {
@@ -135,5 +156,8 @@ export const books = {
   cover: "/covers/placeholder-book.jpg",
   description:
   "Diglot edition containing the complete text of the Bharatiya Sakshya Adhiniyam, 2023 for legal study and professional reference.",
+  subject: "Law of Evidence",
+  binding: "Paperback",
+  publicationYear: "2026",
 },
 };

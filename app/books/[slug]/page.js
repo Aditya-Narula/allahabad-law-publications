@@ -7,7 +7,11 @@ export default async function BookPage({ params }) {
 
   const book = books[slug];
   const relatedBooks = Object.entries(books)
-  .filter(([key]) => key !== slug)
+  .filter(
+    ([key, relatedBook]) =>
+      key !== slug &&
+      relatedBook.category === book.category
+  )
   .slice(0, 3);
 
   if (!book) {
@@ -49,29 +53,49 @@ export default async function BookPage({ params }) {
               {book.hindiTitle}
             </h2>
 
-            <div className="space-y-3 text-lg">
+            <div className="bg-gray-50 border rounded-xl p-5">
 
-              <p>
-                <strong>Author:</strong> {book.author}
-              </p>
+  <h3 className="text-xl font-bold mb-4">
+    Book Information
+  </h3>
 
-              <p>
-                <strong>Edition:</strong> {book.edition}
-              </p>
+  <div className="space-y-3">
 
-              <p>
-                <strong>Pages:</strong> {book.pages}
-              </p>
+    <p>
+      <strong>Author:</strong> {book.author}
+    </p>
 
-              <p>
-                <strong>Language:</strong> {book.language}
-              </p>
+    <p>
+      <strong>Edition:</strong> {book.edition}
+    </p>
 
-              <p>
-                <strong>Category:</strong> {book.category}
-              </p>
+    <p>
+      <strong>Pages:</strong> {book.pages}
+    </p>
 
-            </div>
+    <p>
+      <strong>Language:</strong> {book.language}
+    </p>
+
+    <p>
+      <strong>Subject:</strong> {book.subject}
+    </p>
+
+    <p>
+      <strong>Binding:</strong> {book.binding}
+    </p>
+
+    <p>
+      <strong>Publication Year:</strong> {book.publicationYear}
+    </p>
+
+    <p>
+      <strong>Category:</strong> {book.category}
+    </p>
+
+  </div>
+
+</div>
 
             <hr className="my-6" />
 
