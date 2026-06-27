@@ -14,56 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://allahabadlawpublications.com"),
-
-  title: {
-    default: "Allahabad Law Publications",
-    template: "%s | Allahabad Law Publications",
-  },
+  title: "Allahabad Law Publications | Trusted Legal Publisher Since 1959",
 
   description:
-    "Trusted legal publisher since 1959. Bare Acts, Commentaries, Judicial Service, AIBE, LL.B. Textbooks and legal publications for advocates, judges, law students and legal professionals.",
+    "Authoritative legal books, Bare Acts, Commentaries, Judicial Service, AIBE and LL.B. publications by Allahabad Law Publications since 1959.",
 
-  keywords: [
-    "Allahabad Law Publications",
-    "Bare Acts",
-    "Law Books",
-    "Legal Books",
-    "Judicial Service",
-    "AIBE",
-    "LLB",
-    "Legal Publisher",
-    "Law Publisher India",
-  ],
-
-  authors: [
-    {
-      name: "Allahabad Law Publications",
-    },
-  ],
-
-  creator: "Allahabad Law Publications",
-
-  publisher: "Allahabad Law Publications",
-
-  openGraph: {
-    title: "Allahabad Law Publications",
-
-    description:
-      "Trusted Legal Knowledge Since 1959.",
-
-    url: "https://allahabadlawpublications.com",
-
-    siteName: "Allahabad Law Publications",
-
-    locale: "en_IN",
-
-    type: "website",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
+  verification: {
+    google: "iEDctQ-VdFFcnnWJUBhdNE1-WlG0n76y2neovFIqMF0",
   },
 };
 
