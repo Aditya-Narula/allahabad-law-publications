@@ -1,3 +1,4 @@
+import BookCard from "@/app/components/BookCard";
 import Link from "next/link";
 import { books } from "@/app/data/books";
 
@@ -25,58 +26,12 @@ export default async function LetterPage({ params }) {
         <div className="grid md:grid-cols-3 gap-8">
 
           {filteredBooks.map(([slug, book]) => (
-
-            <div
-              key={slug}
-              className="bg-white rounded-xl shadow-md overflow-hidden"
-            >
-
-              <div className="h-64 bg-gray-200 flex items-center justify-center">
-
-                <div className="text-center">
-
-                  <p className="font-semibold">
-                    Book Cover
-                  </p>
-
-                  <p className="text-sm text-gray-500">
-                    Image Coming Soon
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div className="p-5">
-
-                <h2 className="font-bold text-lg">
-                  {book.englishTitle}
-                </h2>
-
-                <p className="text-gray-600 mb-4">
-                  {book.hindiTitle}
-                </p>
-
-                <p>
-                  <strong>MRP:</strong> ₹{book.mrp}
-                </p>
-
-                <p>
-                  <strong>Sale Price:</strong> ₹{book.salePrice}
-                </p>
-
-                <Link
-                  href={`/books/${slug}`}
-                  className="block mt-4 text-center bg-black text-white py-2 rounded-lg"
-                >
-                  View Details
-                </Link>
-
-              </div>
-
-            </div>
-
-          ))}
+  <BookCard
+    key={slug}
+    slug={slug}
+    book={book}
+  />
+))}
 
         </div>
 

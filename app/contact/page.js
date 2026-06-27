@@ -1,100 +1,164 @@
+import Link from "next/link";
+
+export const metadata = {
+  title: "Contact Us | Allahabad Law Publications",
+  description:
+    "Get in touch with Allahabad Law Publications for legal books, Bare Acts, Commentaries and academic publications.",
+};
+
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-gray-50 py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <main className="min-h-screen bg-gray-50">
 
-        <h1 className="text-5xl font-bold text-center mb-4">
-          Contact Us
-        </h1>
+      {/* Hero */}
 
-        <p className="text-center text-gray-600 mb-12">
-          We'd love to hear from you.
-        </p>
+      <section className="bg-gradient-to-b from-amber-50 via-white to-white py-24">
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="max-w-6xl mx-auto px-6 text-center">
 
-          <div className="bg-white p-8 rounded-xl shadow-sm border">
+          <p className="uppercase tracking-[0.35em] text-amber-700 font-bold mb-4">
+            Contact Us
+          </p>
 
-            <h2 className="text-2xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-8">
+            We'd Love to Hear From You
+          </h1>
+
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Whether you're an advocate, law student, institution or bookseller,
+            we're here to help.
+          </p>
+
+        </div>
+
+      </section>
+
+      {/* Contact Information */}
+
+      <section className="py-20">
+
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
+
+          {/* Left */}
+
+          <div className="bg-white rounded-3xl shadow-sm border p-10">
+
+            <h2 className="text-3xl font-bold mb-8">
               Contact Information
             </h2>
 
-            <div className="space-y-4">
+            <div className="space-y-8">
 
               <div>
-                <h3 className="font-semibold">Address</h3>
-                <p className="text-gray-600">
-                  166-B Allenganj<br />
-                  Prayagraj - 211002<br />
-                  Uttar Pradesh, India
+
+                <h3 className="font-semibold text-lg mb-2">
+                  📍 Address
+                </h3>
+
+                <p className="text-gray-600 leading-7">
+                  Allahabad Law Publications
+                  <br />
+                  Prayagraj
+                  <br />
+                  Uttar Pradesh
+                  <br />
+                  India
                 </p>
+
               </div>
 
               <div>
-                <h3 className="font-semibold">Email</h3>
+
+                <h3 className="font-semibold text-lg mb-2">
+                  ☎ Phone
+                </h3>
+
                 <p className="text-gray-600">
-                  alp.alld@gmail.com
+                  +91-9235650006
                 </p>
+
               </div>
 
               <div>
-                <h3 className="font-semibold">Phone</h3>
+
+                <h3 className="font-semibold text-lg mb-2">
+                  📧 Email
+                </h3>
+
                 <p className="text-gray-600">
-                  +91 9235650006
+                  info@allahabadlawpublications.com
                 </p>
+
               </div>
 
               <div>
-                <h3 className="font-semibold">WhatsApp</h3>
+
+                <h3 className="font-semibold text-lg mb-2">
+                  🕒 Business Hours
+                </h3>
+
                 <p className="text-gray-600">
-                  +91 9235650006
+                  Monday – Saturday
+                  <br />
+                  10:00 AM – 7:00 PM
                 </p>
+
               </div>
 
             </div>
 
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-sm border">
+          {/* Right */}
 
-            <h2 className="text-2xl font-bold mb-6">
-              Send Us a Message
+          <div className="bg-white rounded-3xl shadow-sm border p-10">
+
+            <h2 className="text-3xl font-bold mb-8">
+              Quick Contact
             </h2>
 
-            <form className="space-y-4">
+            <div className="space-y-5">
 
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full border rounded-lg p-3"
-              />
-
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full border rounded-lg p-3"
-              />
-
-              <textarea
-                rows="5"
-                placeholder="Your Message"
-                className="w-full border rounded-lg p-3"
-              ></textarea>
-
-              <button
-                type="submit"
-                className="bg-amber-700 text-white px-6 py-3 rounded-lg"
+              <Link
+                href="https://wa.me/919235650006"
+                target="_blank"
+                className="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-4 rounded-xl font-semibold transition"
               >
-                Send Message
-              </button>
+                Chat on WhatsApp
+              </Link>
 
-            </form>
+              <Link
+                href="tel:+919235650006"
+                className="block w-full bg-gray-900 hover:bg-black text-white text-center py-4 rounded-xl font-semibold transition"
+              >
+                Call Us
+              </Link>
+
+              <Link
+                href="mailto:info@allahabadlawpublications.com"
+                className="block w-full bg-amber-700 hover:bg-amber-800 text-white text-center py-4 rounded-xl font-semibold transition"
+              >
+                Send Email
+              </Link>
+
+            </div>
+
+            <hr className="my-10" />
+
+            <div className="bg-gray-100 rounded-2xl h-80 flex items-center justify-center text-gray-500 text-center px-8">
+
+              Google Map
+              <br />
+              (Embed after launch)
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+      </section>
+
     </main>
   );
 }

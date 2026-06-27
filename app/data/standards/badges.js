@@ -1,0 +1,6 @@
+export const BADGES = {
+  NEW: "NEW",
+  FEATURED: "FEATURED",
+  BESTSELLER: "BESTSELLER",
+  COMING_SOON: "COMING SOON",
+};

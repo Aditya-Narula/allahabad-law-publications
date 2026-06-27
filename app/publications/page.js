@@ -1,22 +1,210 @@
+"use client";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import BookCard from "@/app/components/BookCard";
+import { books } from "@/app/data/books";
+
 export default function PublicationsPage() {
+  const [query, setQuery] = useState("");
+
+  const [categoryFilter, setCategoryFilter] = useState("All");
+
+  const [sortBy, setSortBy] = useState("A-Z");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  useEffect(() => {
+  setCurrentPage(1);
+}, [query, categoryFilter, sortBy]);
+
+  const bareActsCount = Object.values(books).filter(
+  (book) => book.category === "Bare Acts"
+).length;
+
+const commentariesCount = Object.values(books).filter(
+  (book) => book.category === "Commentaries"
+).length;
+
+const aibeCount = Object.values(books).filter(
+  (book) => book.category === "AIBE"
+).length;
+
+const judicialCount = Object.values(books).filter(
+  (book) => book.category === "Judicial Service"
+).length;
+
+const llbCount = Object.values(books).filter(
+  (book) => book.category === "LL.B. Textbooks"
+).length;
+
+const labourCount = Object.values(books).filter(
+  (book) => book.category === "Labour Laws"
+).length;
+
+const criminalCount = Object.values(books).filter(
+  (book) => book.category === "Criminal Laws"
+).length;
+
+const civilCount = Object.values(books).filter(
+  (book) => book.category === "Civil Laws"
+).length;
+
+const newArrivalsCount = Object.values(books).filter(
+  (book) => book.newArrival === true
+).length;
+
+const filteredBooks = Object.entries(books)
+
+  .filter(([, book]) => {
+
+    if (categoryFilter === "All") {
+      return true;
+    }
+
+    if (categoryFilter === "New Arrivals") {
+      return book.newArrival === true;
+    }
+
+    return book.category === categoryFilter;
+
+  })
+
+  .filter(([, book]) => {
+
+    const searchText = query.toLowerCase();
+
+    return (
+
+      book.englishTitle?.toLowerCase().includes(searchText) ||
+
+      book.hindiTitle?.toLowerCase().includes(searchText) ||
+
+      book.subject?.toLowerCase().includes(searchText) ||
+
+      book.keywords?.toLowerCase().includes(searchText)
+
+    );
+
+  })
+
+  .sort(([, a], [, b]) => {
+
+    switch (sortBy) {
+
+      case "Z-A":
+        return b.englishTitle.localeCompare(a.englishTitle);
+
+      case "PriceLow":
+        return a.salePrice - b.salePrice;
+
+      case "PriceHigh":
+        return b.salePrice - a.salePrice;
+
+      default:
+        return a.englishTitle.localeCompare(b.englishTitle);
+
+    }
+
+  });
+
+  const booksPerPage = 12;
+
+const totalPages = Math.ceil(
+  filteredBooks.length / booksPerPage
+);
+
+const paginatedBooks = filteredBooks.slice(
+  (currentPage - 1) * booksPerPage,
+  currentPage * booksPerPage
+);
+
   return (
     <main className="min-h-screen bg-gray-50 py-20">
       <div className="max-w-6xl mx-auto px-6">
 
-        <h1 className="text-5xl font-bold text-center mb-4">
-          Publications
-        </h1>
+        <div className="text-center mb-12">
+
+  <p className="uppercase tracking-[0.35em] text-amber-700 font-bold mb-3">
+    Catalogue
+  </p>
+
+  <h1 className="text-5xl md:text-6xl font-bold mb-5">
+    Explore Our Publications
+  </h1>
+
+  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+    Browse our collection of Bare Acts,
+    Commentaries, Judicial Service,
+    AIBE publications and legal reference books.
+  </p>
+
+</div>
         <div className="max-w-xl mx-auto mb-8">
   <input
-    type="text"
-    placeholder="Search publications..."
-    className="w-full border rounded-xl p-4 shadow-sm"
-  />
+  type="text"
+  placeholder="Search publications..."
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+  className="w-full rounded-2xl border border-gray-300 bg-white hover:bg-amber-50 px-5 py-4 text-lg shadow-sm focus:border-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-200"
+/>
 </div>
 
-        <p className="text-center text-gray-600 mb-12">
-          Browse our collection of trusted legal publications.
-        </p>
+<div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
+
+  <select
+    value={categoryFilter}
+    onChange={(e) => setCategoryFilter(e.target.value)}
+    className="border rounded-xl p-4 shadow-sm"
+  >
+
+    <option value="All">All Categories</option>
+    <option value="Bare Acts">Bare Acts</option>
+    <option value="Commentaries">Commentaries</option>
+    <option value="AIBE">AIBE</option>
+    <option value="Judicial Service">Judicial Service</option>
+    <option value="LL.B. Textbooks">LL.B. Textbooks</option>
+    <option value="Labour Laws">Labour Laws</option>
+    <option value="Criminal Laws">Criminal Laws</option>
+    <option value="Civil Laws">Civil Laws</option>
+    <option value="New Arrivals">New Arrivals</option>
+
+  </select>
+
+  <select
+    value={sortBy}
+    onChange={(e) => setSortBy(e.target.value)}
+    className="border rounded-xl p-4 shadow-sm"
+  >
+
+    <option value="A-Z">Sort: A-Z</option>
+    <option value="Z-A">Sort: Z-A</option>
+    <option value="PriceLow">Price: Low to High</option>
+    <option value="PriceHigh">Price: High to Low</option>
+
+  </select>
+
+</div>
+
+<p className="text-center text-lg text-gray-600 font-medium mb-8">
+  Showing {filteredBooks.length} {filteredBooks.length === 1 ? "Book" : "Books"}
+</p>
+
+        <div className="text-center mb-12">
+
+  <p className="uppercase tracking-[0.35em] text-amber-700 font-bold mb-3">
+    Catalogue
+  </p>
+
+  <h1 className="text-5xl md:text-6xl font-bold mb-5">
+    Explore Our Publications
+  </h1>
+
+  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+    Browse our collection of Bare Acts,
+    Commentaries, Judicial Service,
+    AIBE publications and legal reference books.
+  </p>
+
+</div>
 <section className="mb-16">
 
   <h2 className="text-3xl font-bold text-center mb-8">
@@ -25,166 +213,206 @@ export default function PublicationsPage() {
 
   <div className="grid md:grid-cols-3 gap-6">
 
-    <a
+    <Link
   href="/categories/bare-acts"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
-  Bare Acts
-</a>
+  <h3 className="font-bold text-xl">
+    Bare Acts
+  </h3>
 
-<a
+  <p className="text-gray-500 mt-1 text-sm">
+    {bareActsCount} Books
+  </p>
+</Link>
+
+<Link
   href="/categories/commentaries"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
+  <h3 className="font-bold text-xl">
   Commentaries
-</a>
+</h3>
 
-<a
+<p className="text-gray-500 mt-1 text-sm">
+  {commentariesCount} Books
+</p>
+</Link>
+
+<Link
   href="/categories/aibe"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
+  <h3 className="font-bold text-xl">
   AIBE
-</a>
+</h3>
 
-<a
+<p className="text-gray-500 mt-1 text-sm">
+  {aibeCount} Books
+</p>
+</Link>
+
+<Link
   href="/categories/judicial-service"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
+  <h3 className="font-bold text-xl">
   Judicial Service
-</a>
+</h3>
 
-<a
+<p className="text-gray-500 mt-1 text-sm">
+  {judicialCount} Books
+</p>
+</Link>
+
+<Link
   href="/categories/llb-textbooks"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
+  <h3 className="font-bold text-xl">
   LL.B. Textbooks
-</a>
+</h3>
 
-<a
+<p className="text-gray-500 mt-1 text-sm">
+  {llbCount} Books
+</p>
+</Link>
+
+<Link
   href="/categories/labour-laws"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
+  <h3 className="font-bold text-xl">
   Labour Laws
-</a>
+</h3>
 
-<a
+<p className="text-gray-500 mt-1 text-sm">
+  {labourCount} Books
+</p>
+</Link>
+
+<Link
   href="/categories/criminal-laws"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
+ <h3 className="font-bold text-xl">
   Criminal Laws
-</a>
-  
-<a
-  href="/categories/civil-laws"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
->
-  Civil Laws
-</a>
+</h3>
 
-<a
-  href="/categories/new-arrivals"
-  className="bg-white p-6 rounded-xl shadow-sm border text-center font-semibold block hover:shadow-md"
+<p className="text-gray-500 mt-1 text-sm">
+  {criminalCount} Books
+</p>
+</Link>
+  
+<Link
+  href="/categories/civil-laws"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
 >
+  <h3 className="font-bold text-xl">
+  Civil Laws
+</h3>
+
+<p className="text-gray-500 mt-1 text-sm">
+  {civilCount} Books
+</p>
+</Link>
+
+<Link
+  href="/categories/new-arrivals"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
+>
+  <h3 className="font-bold text-xl">
   New Arrivals
-</a>
+</h3>
+
+<p className="text-gray-500 mt-1 text-sm">
+  {newArrivalsCount} Books
+</p>
+</Link>
 
   </div>
 
 </section>
-        <div className="grid md:grid-cols-3 gap-8">
+        {filteredBooks.length === 0 ? (
 
-          <div className="bg-white p-8 rounded-xl shadow-sm border">
+  <div className="bg-white hover:bg-amber-50 rounded-xl shadow-sm border p-10 text-center">
 
-  <div className="bg-gray-200 h-56 rounded-lg mb-4 flex items-center justify-center">
-    Book Cover
+    <h2 className="text-3xl font-bold mb-4 text-gray-800">
+      No Books Found
+    </h2>
+
+    <p className="text-lg text-gray-500">
+      Try a different search term or category.
+    </p>
+
   </div>
 
-  <h2 className="text-xl font-bold mb-3">
-    Constitution of India
-  </h2>
+) : (
 
-  <p className="text-gray-600 mb-2">
-    Diglot Edition (English & Hindi)
-  </p>
+  <>
+  
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 
-  <p className="text-gray-500 mb-2">
-    MRP: ₹650
-  </p>
+      {paginatedBooks.map(([slug, book]) => (
 
-  <p className="font-bold text-amber-700 mb-4">
-    Sale Price: ₹325
-  </p>
+        <BookCard
+          key={slug}
+          slug={slug}
+          book={book}
+        />
 
-  <a
-  href="/books/constitution-of-india"
-  className="block w-full bg-amber-700 text-white py-2 rounded-lg text-center"
->
-  View Details
-</a>
+      ))}
 
-</div>
+    </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-sm border">
+    <div className="flex justify-center items-center gap-2 mt-10 flex-wrap">
 
-  <div className="bg-gray-200 h-56 rounded-lg mb-4 flex items-center justify-center">
-    Book Cover
-  </div>
+      <button
+        onClick={() =>
+          setCurrentPage((p) => Math.max(1, p - 1))
+        }
+        disabled={currentPage === 1}
+        className="px-4 py-2 border rounded-lg disabled:opacity-50"
+      >
+        Previous
+      </button>
 
-  <h2 className="text-xl font-bold mb-3">
-    Bharatiya Nyaya Sanhita
-  </h2>
+      {Array.from(
+        { length: totalPages },
+        (_, i) => i + 1
+      ).map((page) => (
 
-  <p className="text-gray-600 mb-2">
-    Diglot Edition (English & Hindi)
-  </p>
+        <button
+          key={page}
+          onClick={() => setCurrentPage(page)}
+          className={`px-4 py-2 rounded-lg border ${
+            currentPage === page
+              ? "bg-amber-700 text-white"
+              : "bg-white hover:bg-amber-50"    }`}
 
-  <p className="text-gray-500 mb-2">
-    MRP: ₹400
-  </p>
+        >
+          {page}
+        </button>
 
-  <p className="font-bold text-amber-700 mb-4">
-    Sale Price: ₹200
-  </p>
+      ))}
 
-  <button className="w-full bg-amber-700 text-white py-2 rounded-lg">
-    View Details
-  </button>
+      <button
+        onClick={() =>
+          setCurrentPage((p) =>
+            Math.min(totalPages, p + 1)
+          )
+        }
+        disabled={currentPage === totalPages}
+        className="px-4 py-2 border rounded-lg disabled:opacity-50"
+      >
+        Next
+      </button>
 
-</div>
+    </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-sm border">
+  </>
 
-  <div className="bg-gray-200 h-56 rounded-lg mb-4 flex items-center justify-center">
-    Book Cover
-  </div>
-
-  <h2 className="text-xl font-bold mb-3">
-    Bharatiya Nagarik Suraksha Sanhita
-  </h2>
-
-  <p className="text-gray-600 mb-2">
-    5th Edition • Approx. 950 Pages
-  </p>
-
-  <p className="text-gray-500 mb-2">
-    MRP: ₹800
-  </p>
-
-  <p className="font-bold text-amber-700 mb-2">
-    Sale Price: ₹400
-  </p>
-
-  <p className="text-green-600 mb-4">
-    In Stock (100 Available)
-  </p>
-
-  <button className="w-full bg-amber-700 text-white py-2 rounded-lg">
-    View Details
-  </button>
-
-</div>
-
-        </div>
+)}
 
       </div>
     </main>

@@ -1,112 +1,268 @@
+import { books } from "@/app/data/books";
+import RelatedBookCard from "@/app/components/RelatedBookCard";
 import Image from "next/image";
 import Link from "next/link";
-import { books } from "@/app/data/books";
 export default function Home() {
+
   const featuredBooks = Object.entries(books).filter(
-  ([, book]) => book.featured === true
-);
-const newArrivalBooks = Object.entries(books).filter(
-  ([, book]) => book.newArrival === true
-);
+    ([, book]) => book.featured === true
+  );
+
+  const newArrivalBooks = Object.entries(books).filter(
+    ([, book]) => book.newArrival === true
+  );
+
   return (
     <main className="min-h-screen bg-white text-gray-900">
      
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-gray-100 to-white py-24">
+      <section className="bg-gradient-to-b from-amber-50 via-white to-white py-28">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <div className="flex justify-center mb-8">
   <img
   src="/logo.png"
   alt="Allahabad Law Publications Logo"
-  className="w-28 h-28 mx-auto"
+  className="w-36 h-36 mx-auto drop-shadow-lg"
 />
 </div>
-          <p className="text-amber-700 font-semibold tracking-widest uppercase mb-4">
-            Established 1959
-          </p>
+          <p className="inline-block bg-amber-100 text-amber-800 px-5 py-2 rounded-full font-semibold tracking-wide mb-6">
+  Since 1959 • Trusted Legal Publisher
+</p>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
             Allahabad Law Publications
           </h1>
 
-          <p className="text-2xl md:text-3xl text-amber-700 font-semibold mb-6">
+          <p className="text-2xl md:text-3xl text-amber-700 font-bold mb-8">
             Trusted Legal Knowledge Since 1959
           </p>
-          <p className="text-lg text-gray-600 mt-3">
+          <p className="text-lg text-gray-500 mt-3 italic">
   Founded by Raj Kishore Narula
 </p>
 
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Publishing authoritative legal books for students,
             advocates, judicial aspirants, researchers and legal
             professionals across India.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 rounded-lg font-medium transition">
-              Browse Publications
-            </button>
+          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-5">
+            <Link
+  href="/publications"
+  className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 rounded-lg font-medium transition"
+>
+  Browse Publications
+</Link>
 
-            <button className="border border-gray-300 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition">
-              Contact Us
-            </button>
+            <Link
+  href="/contact"
+  className="border border-gray-300 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition"
+>
+  Contact Us
+</Link>
           </div>
         </div>
       </section>
 
-      {/* Legacy Section */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4">
-            Our Legacy
-          </h2>
+      {/* Our Legacy */}
 
-          <p className="text-center text-gray-600 max-w-3xl mx-auto mb-16">
-            Founded by Raj Kishore Narula, Allahabad Law Publications
-            has served the legal fraternity for more than four decades,
-            publishing reliable and authoritative legal literature.
-          </p>
+<section className="py-24 bg-white border-y border-gray-100">
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-            <div>
-              <h3 className="text-5xl font-bold text-amber-700 mb-2">
-                1959
-              </h3>
-              <p className="text-gray-600">Established</p>
-            </div>
+  <div className="max-w-6xl mx-auto px-6">
 
-            <div>
-              <h3 className="text-5xl font-bold text-amber-700 mb-2">
-                1000+
-              </h3>
-              <p className="text-gray-600">Publications</p>
-            </div>
+    <div className="text-center max-w-4xl mx-auto">
 
-            <div>
-              <h3 className="text-5xl font-bold text-amber-700 mb-2">
-                60+
-              </h3>
-              <p className="text-gray-600">Years of Service</p>
-            </div>
+      <p className="uppercase tracking-[0.35em] text-amber-700 font-bold mb-4">
+        Our Legacy
+      </p>
 
-            <div>
-              <h3 className="text-5xl font-bold text-amber-700 mb-2">
-                India
-              </h3>
-              <p className="text-gray-600">Focused Legal Publishing</p>
-            </div>
-          </div>
+      <h2 className="text-5xl md:text-6xl font-bold mb-8">
+        Over Six Decades of
+        <span className="text-amber-700"> Legal Publishing</span>
+      </h2>
+
+      <p className="text-xl leading-9 text-gray-600">
+
+        Since <strong>1959</strong>, Allahabad Law Publications has
+        remained committed to publishing authentic, reliable and
+        up-to-date legal literature for advocates, judges,
+        law students, judicial aspirants, universities and
+        legal professionals throughout India.
+
+      </p>
+
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-10 mt-20">
+
+      <div className="text-center">
+
+        <div className="text-6xl font-extrabold text-amber-700">
+          1959
         </div>
-      </section>
+
+        <h3 className="text-2xl font-bold mt-5">
+          Established
+        </h3>
+
+        <p className="text-gray-600 mt-3 leading-7">
+
+          Founded by
+          <strong> Raj Kishore Narula</strong> with a vision
+          to publish dependable legal literature.
+
+        </p>
+
+      </div>
+
+      <div className="text-center">
+
+        <div className="text-6xl font-extrabold text-amber-700">
+          1000+
+        </div>
+
+        <h3 className="text-2xl font-bold mt-5">
+          Publications
+        </h3>
+
+        <p className="text-gray-600 mt-3 leading-7">
+
+          A comprehensive catalogue covering Bare Acts,
+          Commentaries, Judicial Service, AIBE,
+          LL.B. Textbooks and more.
+
+        </p>
+
+      </div>
+
+      <div className="text-center">
+
+        <div className="text-6xl font-extrabold text-amber-700">
+          India
+        </div>
+
+        <h3 className="text-2xl font-bold mt-5">
+          Trusted Nationwide
+        </h3>
+
+        <p className="text-gray-600 mt-3 leading-7">
+
+          Serving advocates, courts, educational institutions,
+          law libraries and legal professionals across India.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* Browse by Category */}
+
+<section className="bg-gray-50 py-24">
+
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="text-center mb-16">
+
+      <p className="uppercase tracking-[0.35em] text-amber-700 font-bold mb-4">
+        Browse Collection
+      </p>
+
+      <h2 className="text-5xl font-bold mb-6">
+        Explore by Category
+      </h2>
+
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        Discover our extensive collection of legal publications
+        organised by subject and purpose.
+      </p>
+
+    </div>
+
+    <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+      <Link
+        href="/categories/bare-acts"
+        className="bg-white rounded-2xl p-8 border hover:shadow-xl hover:-translate-y-2 transition"
+      >
+        <div className="text-5xl mb-6">⚖️</div>
+
+        <h3 className="text-2xl font-bold mb-3">
+          Bare Acts
+        </h3>
+
+        <p className="text-gray-600 leading-7">
+          Updated Bare Acts with latest amendments in Diglot editions.
+        </p>
+
+      </Link>
+
+      <Link
+        href="/categories/commentaries"
+        className="bg-white rounded-2xl p-8 border hover:shadow-xl hover:-translate-y-2 transition"
+      >
+        <div className="text-5xl mb-6">📚</div>
+
+        <h3 className="text-2xl font-bold mb-3">
+          Commentaries
+        </h3>
+
+        <p className="text-gray-600 leading-7">
+          Comprehensive legal commentaries by experienced authors.
+        </p>
+
+      </Link>
+
+      <Link
+        href="/categories/judicial-service"
+        className="bg-white rounded-2xl p-8 border hover:shadow-xl hover:-translate-y-2 transition"
+      >
+        <div className="text-5xl mb-6">👨🏻‍⚖️</div>
+
+        <h3 className="text-2xl font-bold mb-3">
+          Judicial Service
+        </h3>
+
+        <p className="text-gray-600 leading-7">
+          Preparation material for Judicial Service Examinations.
+        </p>
+
+      </Link>
+
+      <Link
+        href="/categories/aibe"
+        className="bg-white rounded-2xl p-8 border hover:shadow-xl hover:-translate-y-2 transition"
+      >
+        <div className="text-5xl mb-6">🎓</div>
+
+        <h3 className="text-2xl font-bold mb-3">
+          AIBE
+        </h3>
+
+        <p className="text-gray-600 leading-7">
+          Bare Acts, guides and study material for the All India Bar Examination.
+        </p>
+
+      </Link>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* Featured Publications */}
       <section className="bg-gray-50 py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4">
-            Featured Publications
-          </h2>
+          <h2 className="text-5xl font-bold text-center mb-4">
+  Featured Publications
+</h2>
 
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+          <p className="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-16 leading-relaxed">
   Explore our most trusted legal publications used by advocates,
   judicial aspirants, law students and legal professionals across India.
 </p>
@@ -115,89 +271,23 @@ const newArrivalBooks = Object.entries(books).filter(
 
   {featuredBooks.map(([slug, book]) => (
 
-    <div
+    <RelatedBookCard
   key={slug}
-  className="bg-white rounded-xl shadow-md border p-5 min-w-0"
->
-
-      <div className="flex flex-col md:flex-row gap-5">
-
-  <div className="w-full md:w-40 h-56 bg-gray-100 rounded-lg overflow-hidden border flex-shrink-0">
-
-  {book.cover ? (
-    <Image
-  src={book.cover || "/covers/placeholder-book.jpg"}
-  alt={book.englishTitle}
-  width={160}
-  height={224}
-  className="w-full h-full object-cover"
+  slug={slug}
+  book={book}
 />
-  ) : (
-    <div className="w-full md:w-40 h-56 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 border">
-
-  <div className="text-center">
-
-    <p className="font-semibold text-gray-700">
-      Cover
-    </p>
-
-    <p className="text-sm text-gray-500">
-      Coming Soon
-    </p>
-
-  </div>
-
-</div>
-  )}
-
-</div>
-
-  <div className="flex-1 min-w-0">
-
-    <h3 className="text-lg md:text-xl font-bold mb-2 break-words">
-      {book.englishTitle}
-    </h3>
-
-    <p className="text-amber-700 font-medium mb-4">
-      {book.hindiTitle}
-    </p>
-
-    <p className="mb-1">
-      <strong>Author:</strong> {book.author}
-    </p>
-
-    <p className="mb-3">
-      <strong>Edition:</strong> {book.edition}
-    </p>
-
-    <hr className="my-3" />
-
-    <p className="text-gray-700">
-      MRP: ₹{book.mrp}
-    </p>
-
-    <p className="text-3xl font-bold text-amber-700 my-2">
-      ₹{book.salePrice}
-    </p>
-
-    <p className="text-green-600 font-semibold">
-      In Stock ({book.stock} Available)
-    </p>
-
-    <Link
-      href={`/books/${slug}`}
-      className="block mt-5 text-center bg-black text-white py-3 rounded-lg"
-    >
-      View Details
-    </Link>
-
-  </div>
-
-</div>
-
-    </div>
-
   ))}
+
+</div>
+
+<div className="text-center mt-14">
+
+  <Link
+    href="/publications"
+    className="inline-block bg-gray-900 text-white px-8 py-4 rounded-xl font-semibold hover:bg-amber-600 transition"
+  >
+    View Complete Catalogue
+  </Link>
 
 </div>
 
@@ -207,11 +297,11 @@ const newArrivalBooks = Object.entries(books).filter(
 <section className="bg-white py-20">
   <div className="max-w-6xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-center mb-4">
-      New Arrivals
-    </h2>
+    <h2 className="text-5xl font-bold text-center mb-4">
+  New Arrivals
+</h2>
 
-    <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+    <p className="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-16 leading-relaxed">
       Explore the latest additions to our legal publication catalogue.
     </p>
 
@@ -219,205 +309,116 @@ const newArrivalBooks = Object.entries(books).filter(
 
       {newArrivalBooks.map(([slug, book]) => (
 
-        <div
-  key={slug}
-  className="bg-white rounded-xl shadow-md border p-5 min-w-0"
->
-
-          <div className="flex flex-col md:flex-row gap-5">
-
-  <div className="h-40 bg-gray-100 rounded-lg overflow-hidden border mb-4">
-
-  <Image
-    src={book.cover || "/covers/placeholder-book.jpg"}
-    alt={book.englishTitle}
-    width={160}
-    height={224}
-    className="w-full h-full object-cover"
+  <RelatedBookCard
+    key={slug}
+    slug={slug}
+    book={book}
   />
 
-</div>
-
-  <div className="flex-1 min-w-0">
-
-    <h3 className="text-lg md:text-xl font-bold mb-2 break-words">
-      {book.englishTitle}
-    </h3>
-
-    <p className="text-amber-700 font-medium mb-4">
-      {book.hindiTitle}
-    </p>
-
-    <p className="mb-1">
-      <strong>Author:</strong> {book.author}
-    </p>
-
-    <p className="mb-3">
-      <strong>Edition:</strong> {book.edition}
-    </p>
-
-    <hr className="my-3" />
-
-    <p className="text-gray-700">
-      MRP: ₹{book.mrp}
-    </p>
-
-    <p className="text-3xl font-bold text-amber-700 my-2">
-      ₹{book.salePrice}
-    </p>
-
-    <p className="text-green-600 font-semibold">
-      In Stock ({book.stock} Available)
-    </p>
-
-    <Link
-      href={`/books/${slug}`}
-      className="block mt-5 text-center bg-black text-white py-3 rounded-lg"
-    >
-      View Details
-    </Link>
-
-  </div>
-
-</div>
-
-        </div>
-
-      ))}
+))}
 
     </div>
+
+    <div className="text-center mt-14">
+
+  <Link
+    href="/publications?category=New%20Arrivals"
+    className="inline-block bg-gray-900 text-white px-8 py-4 rounded-xl font-semibold hover:bg-amber-600 transition"
+  >
+    View All New Arrivals
+  </Link>
+
+</div>
 
   </div>
 </section>
 
-{/* Why Choose Us */}
-<section className="bg-white py-20">
+{/* Why Trust ALP */}
+
+<section className="py-24 bg-white">
+
   <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-center mb-4">
-      Why Choose Allahabad Law Publications
-    </h2>
+    <div className="text-center mb-16">
 
-    <p className="text-center text-gray-600 mb-16">
-      More than six decades of trusted legal publishing.
-    </p>
+      <p className="uppercase tracking-[0.35em] text-amber-700 font-bold mb-4">
+        Why Choose Us
+      </p>
 
-    <div className="grid md:grid-cols-4 gap-8">
+      <h2 className="text-5xl font-bold">
+        Why Thousands Trust
+        <span className="text-amber-700"> Allahabad Law Publications</span>
+      </h2>
 
-      <div className="bg-gray-50 p-8 rounded-xl border text-center">
-        <h3 className="text-3xl font-bold text-amber-700 mb-3">
-          1959
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="bg-gray-50 rounded-2xl p-8 border">
+        <div className="text-4xl mb-5">🏛️</div>
+        <h3 className="text-2xl font-bold mb-3">
+          Since 1959
         </h3>
-        <p className="text-gray-700">
-          Established
+        <p className="text-gray-600">
+          More than six decades of legal publishing excellence.
         </p>
       </div>
 
-      <div className="bg-gray-50 p-8 rounded-xl border text-center">
-        <h3 className="text-3xl font-bold text-amber-700 mb-3">
-          1000+
+      <div className="bg-gray-50 rounded-2xl p-8 border">
+        <div className="text-4xl mb-5">📖</div>
+        <h3 className="text-2xl font-bold mb-3">
+          1000+ Publications
         </h3>
-        <p className="text-gray-700">
-          Publications
+        <p className="text-gray-600">
+          One of India's largest collections of legal books.
         </p>
       </div>
 
-      <div className="bg-gray-50 p-8 rounded-xl border text-center">
-        <h3 className="text-3xl font-bold text-amber-700 mb-3">
-          65+
+      <div className="bg-gray-50 rounded-2xl p-8 border">
+        <div className="text-4xl mb-5">⚖️</div>
+        <h3 className="text-2xl font-bold mb-3">
+          Latest Amendments
         </h3>
-        <p className="text-gray-700">
-          Years of Legacy
+        <p className="text-gray-600">
+          Publications updated with the latest legislative developments.
         </p>
       </div>
 
-      <div className="bg-gray-50 p-8 rounded-xl border text-center">
-        <h3 className="text-3xl font-bold text-amber-700 mb-3">
-          India
+      <div className="bg-gray-50 rounded-2xl p-8 border">
+        <div className="text-4xl mb-5">🌐</div>
+        <h3 className="text-2xl font-bold mb-3">
+          Diglot Editions
         </h3>
-        <p className="text-gray-700">
+        <p className="text-gray-600">
+          English and Hindi editions prepared for wider accessibility.
+        </p>
+      </div>
+
+      <div className="bg-gray-50 rounded-2xl p-8 border">
+        <div className="text-4xl mb-5">🎓</div>
+        <h3 className="text-2xl font-bold mb-3">
+          Competitive Exams
+        </h3>
+        <p className="text-gray-600">
+          Trusted preparation material for Judicial Service and AIBE.
+        </p>
+      </div>
+
+      <div className="bg-gray-50 rounded-2xl p-8 border">
+        <div className="text-4xl mb-5">🤝</div>
+        <h3 className="text-2xl font-bold mb-3">
           Trusted Nationwide
+        </h3>
+        <p className="text-gray-600">
+          Used by advocates, judges, universities and law libraries across India.
         </p>
       </div>
 
     </div>
 
   </div>
+
 </section>
-
-{/* Footer */}
-      
-      <footer className="bg-gray-900 text-white py-16">
-  <div className="max-w-7xl mx-auto px-6">
-
-    <div className="grid md:grid-cols-4 gap-10">
-
-      <div>
-        <h3 className="text-xl font-bold mb-4">
-          Allahabad Law Publications
-        </h3>
-
-        <p className="text-gray-400">
-          Trusted Legal Knowledge Since 1959.
-        </p>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold mb-4">
-          Quick Links
-        </h3>
-
-        <ul className="space-y-2 text-gray-400">
-          <li><a href="/">Home</a></li>
-          <li><a href="/publications">Publications</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold mb-4">
-          Categories
-        </h3>
-
-        <ul className="space-y-2 text-gray-400">
-          <li>Bare Acts</li>
-          <li>Commentaries</li>
-          <li>AIBE</li>
-          <li>Judicial Service</li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold mb-4">
-          Contact
-        </h3>
-
-        <p className="text-gray-400">
-          166-B Allenganj
-        </p>
-
-        <p className="text-gray-400">
-          Prayagraj - 211002
-        </p>
-
-        <p className="text-gray-400 mt-2">
-          +91 9235650006
-        </p>
-
-        <p className="text-gray-400">
-          alp.alld@gmail.com
-        </p>
-      </div>
-
-    </div>
-
-    <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500">
-      © 2026 Allahabad Law Publications. All Rights Reserved.
-    </div>
-
-  </div>
-</footer>
     </main>
   );
 }

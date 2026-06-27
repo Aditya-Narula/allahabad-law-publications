@@ -1,0 +1,10 @@
+export const BOOK_CODES = {
+  BARE_ACTS: "BA",
+  COMMENTARIES: "CM",
+  CRIMINAL_LAWS: "CL",
+  CIVIL_LAWS: "CV",
+  LABOUR_LAWS: "LL",
+  JUDICIAL_SERVICE: "JS",
+  LLB: "LB",
+  AIBE: "AI",
+};
