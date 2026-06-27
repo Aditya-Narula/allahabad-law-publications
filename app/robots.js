@@ -6,6 +6,6 @@ export default function robots() {
     },
 
     sitemap:
-      "https://allahabadlawpublications.com/sitemap.xml",
+      "https://allahabadlawpublications.co.in/sitemap.xml",
   };
 }

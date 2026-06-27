@@ -1,7 +1,7 @@
 export default function sitemap() {
 
   const baseUrl =
-    "https://allahabadlawpublications.com";
+    "https://allahabadlawpublications.co.in";
 
   return [
 
