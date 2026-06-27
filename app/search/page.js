@@ -1,12 +1,15 @@
 "use client";
-
+import BookCard from "@/app/components/BookCard";
 import { useState } from "react";
-import Link from "next/link";
 import { books } from "@/app/data/books";
 
 export default function SearchPage() {
 
   const [query, setQuery] = useState("");
+
+  const [categoryFilter, setCategoryFilter] = useState("All");
+
+const [sortBy, setSortBy] = useState("A-Z");
 
   const results = Object.entries(books)
 
