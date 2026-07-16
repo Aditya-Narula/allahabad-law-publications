@@ -7,15 +7,13 @@ import RelatedBookCard from "@/app/components/RelatedBookCard";
 export default async function BookPage({ params }) {
   const { slug } = await params;
 
-  const book = books[slug];
+ const book = books[slug];
 
-const discount =
-  book.mrp > 0
-    ? Math.round(
-        ((book.mrp - book.salePrice) / book.mrp) * 100
-      )
-    : 0;
+if (!book) {
+  return <h1>Book Not Found</h1>;
+}
 
+const discount = book.discountPercent || 0;
 const savings = book.mrp - book.salePrice;
 
 const relatedBooks = Object.entries(books)
@@ -25,10 +23,6 @@ const relatedBooks = Object.entries(books)
       relatedBook.category === book.category
   )
   .slice(0, 3);
-
-  if (!book) {
-    return <h1>Book Not Found</h1>;
-  }
 
   return (
   <main className="min-h-screen bg-gray-50 py-12">

@@ -7,7 +7,9 @@ import { judicialService } from "./books/judicialService";
 import { llbTextbooks } from "./books/llbTextbooks";
 import { aibe } from "./books/aibe";
 
-export const books = {
+export const DEFAULT_DISCOUNT_PERCENT = 40;
+
+const rawBooks = {
   ...bareActs,
   ...commentaries,
   ...criminalLaws,
@@ -17,3 +19,25 @@ export const books = {
   ...llbTextbooks,
   ...aibe,
 };
+
+export const books = Object.fromEntries(
+  Object.entries(rawBooks).map(([slug, book]) => {
+    const mrp = Number(book.mrp) || 0;
+
+    const salePrice =
+      mrp > 0
+        ? Math.round(
+            mrp * (1 - DEFAULT_DISCOUNT_PERCENT / 100)
+          )
+        : 0;
+
+    return [
+      slug,
+      {
+        ...book,
+        discountPercent: DEFAULT_DISCOUNT_PERCENT,
+        salePrice,
+      },
+    ];
+  })
+);

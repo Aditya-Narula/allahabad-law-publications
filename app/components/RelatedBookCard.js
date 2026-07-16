@@ -73,19 +73,17 @@ export default function RelatedBookCard({ slug, book }) {
 
         <div className="mt-5">
 
-          {book.mrp > book.salePrice && (
-            <div className="flex items-center gap-3">
+          {discount > 0 && book.mrp > book.salePrice && (
+  <div className="flex items-center gap-3">
+    <span className="text-gray-400 line-through">
+      ₹{book.mrp}
+    </span>
 
-              <span className="text-gray-400 line-through">
-                ₹{book.mrp}
-              </span>
-
-              <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                {discount}% OFF
-              </span>
-
-            </div>
-          )}
+    <span className="rounded-full bg-red-600 px-2 py-1 text-xs font-semibold text-white">
+      {discount}% OFF
+    </span>
+  </div>
+)}
 
           <div className="text-3xl font-bold text-amber-700 mt-1">
             ₹{book.salePrice}

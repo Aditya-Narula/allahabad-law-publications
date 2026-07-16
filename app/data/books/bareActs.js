@@ -18,7 +18,6 @@ export const bareActs = {
   subject: SUBJECTS.ADMINISTRATIVE_LAW,
 
   mrp: 90,
-  salePrice: 45,
 
   description:
     "Diglot edition containing the Administrative Tribunals Act, 1985 for students, advocates and legal professionals.",
@@ -37,8 +36,7 @@ export const bareActs = {
 
   subject: SUBJECTS.ADMINISTRATIVE_LAW,
 
-  mrp: 150,
-  salePrice: 75,
+  mrp: 300,
 
   description:
     "Diglot edition containing the Advocates Act, 1961 with allied provisions for advocates, students and legal professionals.",
@@ -57,8 +55,7 @@ export const bareActs = {
 
   subject: SUBJECTS.ADR,
 
-  mrp: 275,
-  salePrice: 138,
+  mrp: 200,
 
   description:
     "Diglot edition containing the Arbitration and Conciliation Act, 1996 with updated statutory provisions.",
@@ -77,8 +74,7 @@ export const bareActs = {
 
   subject: SUBJECTS.CRIMINAL_LAW,
 
-  mrp: 120,
-  salePrice: 60,
+  mrp: 190,
 
   description:
     "Diglot edition containing the Arms Act, 1959 with the relevant statutory provisions.",
@@ -100,8 +96,6 @@ export const bareActs = {
 
   mrp: 700,
 
-  salePrice: 350,
-
   description:
     "Diglot edition containing the Arms Act, 1959 together with the Arms Rules, 2016.",
 
@@ -119,8 +113,7 @@ export const bareActs = {
 
   subject: SUBJECTS.COMMERCIAL_LAW,
 
-  mrp: 120,
-  salePrice: 60,
+  mrp: 230,
 
   description:
     "Diglot edition containing the Banning of Unregulated Deposit Schemes Act, 2019.",
@@ -141,8 +134,6 @@ export const bareActs = {
   subject: SUBJECTS.CRIMINAL_PROCEDURE,
 
   mrp: 775,
-
-  salePrice: 388,
 
   featured: true,
 
@@ -170,7 +161,6 @@ export const bareActs = {
 
   mrp: 495,
 
-  salePrice: 248,
 
   featured: true,
 
@@ -198,7 +188,6 @@ export const bareActs = {
 
   mrp: 240,
 
-  salePrice: 120,
 
   featured: true,
 
@@ -226,8 +215,6 @@ biologicalDiversityAct: {
 
   mrp: 140,
 
-  salePrice: 70,
-
   description:
     "Diglot edition containing the Biological Diversity Act, 2002.",
 
@@ -250,8 +237,6 @@ bondedLabourAct: {
 
   mrp: 70,
 
-  salePrice: 35,
-
   description:
     "Diglot edition containing the Bonded Labour System (Abolition) Act, 1976 together with the Rules.",
 
@@ -272,8 +257,6 @@ bureauOfIndianStandardsAct: {
 
   mrp: 100,
 
-  salePrice: 50,
-
   description:
     "Diglot edition containing the Bureau of Indian Standards Act, 2016.",
 
@@ -291,7 +274,6 @@ cashlessTreatmentRoadAccidentVictimsScheme: {
   letter: "C",
   subject: SUBJECTS.MOTOR_VEHICLE_LAW,
   mrp: 400,
-  salePrice: 200,
   description:
     "Diglot edition containing the Cashless Treatment of Road Accident Victims Scheme, 2025 with Guidelines.",
   keywords:
@@ -308,7 +290,6 @@ childAndAdolescentLabourAct: {
   letter: "C",
   subject: SUBJECTS.LABOUR_LAW,
   mrp: 110,
-  salePrice: 55,
   description:
     "Diglot edition containing the Child and Adolescent Labour (Prohibition and Regulation) Act, 1986.",
   keywords:
@@ -324,7 +305,6 @@ childLaws: {
   letter: "C",
   subject: SUBJECTS.CHILD_LAW,
   mrp: 1395,
-  salePrice: 698,
   description:
     "Compilation of important child-related laws in Hindi.",
   keywords:
@@ -339,7 +319,6 @@ codeOnSocialSecurity: {
   letter: "C",
   subject: SUBJECTS.LABOUR_LAW,
   mrp: 380,
-  salePrice: 190,
   description:
     "Diglot edition containing the Code on Social Security, 2020.",
   keywords:
@@ -353,8 +332,7 @@ codeOnWages: {
   hindiTitle: "मजदूरी संहिता, 2019",
   letter: "C",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 150,
-  salePrice: 75,
+  mrp: 195,
   description:
     "Diglot edition containing the Code on Wages, 2019.",
   keywords:
@@ -369,7 +347,7 @@ commercialCourtsAct: {
   letter: "C",
   subject: SUBJECTS.COMMERCIAL_LAW,
   mrp: 160,
-  salePrice: 80,
+
   description:
     "Diglot edition containing the Commercial Courts Act, 2015.",
   keywords:
@@ -384,7 +362,7 @@ companiesAct: {
   letter: "C",
   subject: SUBJECTS.CORPORATE_LAW,
   mrp: 950,
-  salePrice: 475,
+
   description:
     "Diglot edition containing the Companies Act, 2013.",
   keywords:
@@ -399,7 +377,6 @@ competitionAct: {
   letter: "C",
   subject: SUBJECTS.COMPETITION_LAW,
   mrp: 210,
-  salePrice: 105,
   description:
     "Diglot edition containing the Competition Act, 2002.",
   keywords:
@@ -413,8 +390,7 @@ constitutionOfIndia: {
   hindiTitle: "भारत का संविधान",
   letter: "C",
   subject: SUBJECTS.CONSTITUTIONAL_LAW,
-  mrp: 630,
-  salePrice: 315,
+  mrp: 650,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Constitution of India along with the Constitution (One Hundred & Sixth Amendment) Act, 2023.",
@@ -430,7 +406,6 @@ consumerProtectionAct: {
   letter: "C",
   subject: SUBJECTS.CONSUMER_LAW,
   mrp: 150,
-  salePrice: 75,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Consumer Protection Act, 2019.",
@@ -448,7 +423,6 @@ consumerProtectionRules: {
   letter: "C",
   subject: SUBJECTS.CONSUMER_LAW,
   mrp: 450,
-  salePrice: 225,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Consumer Protection Act, 2019 with Rules and Regulations.",
@@ -464,7 +438,7 @@ contemptOfCourtsAct: {
   letter: "C",
   subject: SUBJECTS.JUDICIAL_ADMINISTRATION,
   mrp: 100,
-  salePrice: 50,
+
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Contempt of Courts Act, 1971.",
@@ -480,7 +454,6 @@ indianContractAct: {
   letter: "C",
   subject: SUBJECTS.CONTRACT_LAW,
   mrp: 220,
-  salePrice: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Contract Act, 1872.",
@@ -495,8 +468,8 @@ copyrightAct: {
   hindiTitle: "प्रतिलिप्यधिकार अधिनियम, 1957",
   letter: "C",
   subject: SUBJECTS.INTELLECTUAL_PROPERTY_LAW,
-  mrp: 200,
-  salePrice: 100,
+  mrp: 220,
+
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Copyright Act, 1957.",
@@ -512,7 +485,7 @@ digitalPersonalDataProtectionAct: {
   letter: "D",
   subject: SUBJECTS.TECHNOLOGY_LAW,
   mrp: 110,
-  salePrice: 55,
+
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Digital Personal Data Protection Act, 2023.",
@@ -529,7 +502,6 @@ digitalPersonalDataProtectionActHB: {
   subject: SUBJECTS.TECHNOLOGY_LAW,
   binding: BINDINGS.HARDBOUND,
   mrp: 180,
-  salePrice: 90,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Hardbound diglot edition containing the Digital Personal Data Protection Act, 2023.",
@@ -545,7 +517,6 @@ dowryProhibitionAct: {
   letter: "D",
   subject: SUBJECTS.WOMEN_LAW,
   mrp: 110,
-  salePrice: 55,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Dowry Prohibition Act, 1961 with Rules.",
@@ -561,7 +532,6 @@ drugsAndCosmeticsAct: {
   letter: "D",
   subject: SUBJECTS.HEALTH_LAW,
   mrp: 0,
-  salePrice: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Drugs and Cosmetics Act, 1940. Price to be updated after release.",
@@ -577,7 +547,6 @@ easementsAct: {
   letter: "E",
   subject: SUBJECTS.PROPERTY_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Easements Act, 1882.",
@@ -592,8 +561,7 @@ electricityAct: {
   hindiTitle: "विद्युत अधिनियम, 2003",
   letter: "E",
   subject: SUBJECTS.ENERGY_LAW,
-  mrp: 380,
-  salePrice: 190,
+  mrp: 400,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Electricity Act, 2003.",
@@ -609,7 +577,6 @@ environmentalLaw: {
   letter: "E",
   subject: SUBJECTS.ENVIRONMENTAL_LAW,
   mrp: 280,
-  salePrice: 140,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Comprehensive diglot edition on Environmental Law.",
@@ -625,7 +592,6 @@ environmentWildlifeLaws: {
   letter: "E",
   subject: SUBJECTS.ENVIRONMENTAL_LAW,
   mrp: 700,
-  salePrice: 350,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of Environmental and Wild Life Laws.",
@@ -641,7 +607,6 @@ essentialCommoditiesAct: {
   letter: "E",
   subject: SUBJECTS.COMMERCIAL_LAW,
   mrp: 140,
-  salePrice: 70,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Essential Commodities Act, 1955.",
@@ -656,8 +621,7 @@ familyLaws: {
   hindiTitle: "पारिवारिक विधियां",
   letter: "F",
   subject: SUBJECTS.FAMILY_LAW,
-  mrp: 200,
-  salePrice: 100,
+  mrp: 220,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of major Family Laws in diglot format.",
@@ -673,7 +637,6 @@ foodSafetyAct: {
   letter: "F",
   subject: SUBJECTS.FOOD_LAW,
   mrp: 225,
-  salePrice: 113,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Food Safety and Standards Act, 2006.",
@@ -691,7 +654,6 @@ foodSafetyActRules: {
   letter: "F",
   subject: SUBJECTS.FOOD_LAW,
   mrp: 330,
-  salePrice: 165,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Food Safety and Standards Act, 2006 with Rules, 2011.",
@@ -707,7 +669,6 @@ generalClausesAct: {
   letter: "G",
   subject: SUBJECTS.GENERAL_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the General Clauses Act, 1897.",
@@ -723,7 +684,6 @@ guardiansAndWardsAct: {
   letter: "G",
   subject: SUBJECTS.FAMILY_LAW,
   mrp: 120,
-  salePrice: 60,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Guardians and Wards Act, 1890.",
@@ -739,7 +699,6 @@ hinduLaw: {
   letter: "H",
   subject: SUBJECTS.FAMILY_LAW,
   mrp: 180,
-  salePrice: 90,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of important Hindu Law statutes.",
@@ -757,7 +716,6 @@ immoralTrafficAct: {
   letter: "I",
   subject: SUBJECTS.CRIMINAL_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Immoral Traffic (Prevention) Act, 1956.",
@@ -773,7 +731,6 @@ industrialRelationsCode: {
   letter: "I",
   subject: SUBJECTS.LABOUR_LAW,
   mrp: 220,
-  salePrice: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Industrial Relations Code, 2020.",
@@ -789,7 +746,6 @@ informationTechnologyAct: {
   letter: "I",
   subject: SUBJECTS.CYBER_LAW,
   mrp: 180,
-  salePrice: 90,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Information Technology Act, 2000.",
@@ -806,8 +762,7 @@ informationTechnologyActRules: {
     "सूचना प्रौद्योगिकी अधिनियम, 2000 तथा नियम",
   letter: "I",
   subject: SUBJECTS.CYBER_LAW,
-  mrp: 350,
-  salePrice: 175,
+  mrp: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Information Technology Act, 2000 with Rules.",
@@ -822,8 +777,7 @@ intellectualPropertyLaws: {
   hindiTitle: "बौद्धिक संपदा विधियां",
   letter: "I",
   subject: SUBJECTS.INTELLECTUAL_PROPERTY_LAW,
-  mrp: 500,
-  salePrice: 250,
+  mrp: 480,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of Intellectual Property Laws.",
@@ -838,8 +792,7 @@ juvenileJusticeAct: {
   hindiTitle: "किशोर न्याय अधिनियम, 2015",
   letter: "J",
   subject: SUBJECTS.JUVENILE_JUSTICE,
-  mrp: 250,
-  salePrice: 125,
+  mrp: 200,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Juvenile Justice (Care and Protection of Children) Act, 2015.",
@@ -854,8 +807,7 @@ juvenileJusticeActRules: {
   hindiTitle: "किशोर न्याय अधिनियम, 2015 तथा नियम",
   letter: "J",
   subject: SUBJECTS.JUVENILE_JUSTICE,
-  mrp: 400,
-  salePrice: 200,
+  mrp: 700,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Juvenile Justice (Care and Protection of Children) Act, 2015 with Rules.",
@@ -870,8 +822,7 @@ labourIndustrialLaws: {
   hindiTitle: "श्रम एवं औद्योगिक विधियां",
   letter: "L",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 600,
-  salePrice: 300,
+  mrp: 440,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of Labour and Industrial Laws.",
@@ -886,8 +837,7 @@ labourCodeNewLaws: {
   hindiTitle: "श्रम संहिताएं",
   letter: "L",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 500,
-  salePrice: 250,
+  mrp: 1095,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of the New Labour Codes.",
@@ -902,8 +852,7 @@ legalMetrologyAct: {
   hindiTitle: "विधिक माप विज्ञान अधिनियम, 2009",
   letter: "L",
   subject: SUBJECTS.COMMERCIAL_LAW,
-  mrp: 180,
-  salePrice: 90,
+  mrp: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Legal Metrology Act, 2009.",
@@ -918,8 +867,7 @@ legalServicesAuthoritiesAct: {
   hindiTitle: "विधिक सेवा प्राधिकरण अधिनियम, 1987",
   letter: "L",
   subject: SUBJECTS.LEGAL_AID,
-  mrp: 120,
-  salePrice: 60,
+  mrp: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Legal Services Authorities Act, 1987.",
@@ -934,8 +882,7 @@ limitationAct: {
   hindiTitle: "परिसीमा अधिनियम, 1963",
   letter: "L",
   subject: SUBJECTS.CIVIL_LAW,
-  mrp: 140,
-  salePrice: 70,
+  mrp: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Limitation Act, 1963.",
@@ -952,8 +899,7 @@ maintenanceSeniorCitizensAct: {
     "माता-पिता एवं वरिष्ठ नागरिक भरण-पोषण अधिनियम, 2007",
   letter: "M",
   subject: SUBJECTS.SOCIAL_WELFARE_LAW,
-  mrp: 150,
-  salePrice: 75,
+  mrp: 90,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Maintenance and Welfare of Parents and Senior Citizens Act, 2007.",
@@ -968,8 +914,7 @@ mediationAct: {
   hindiTitle: "मध्यस्थता अधिनियम, 2023",
   letter: "M",
   subject: SUBJECTS.ALTERNATIVE_DISPUTE_RESOLUTION,
-  mrp: 180,
-  salePrice: 90,
+  mrp: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Mediation Act, 2023.",
@@ -984,8 +929,7 @@ mentalHealthcareAct: {
   hindiTitle: "मानसिक स्वास्थ्य देखभाल अधिनियम, 2017",
   letter: "M",
   subject: SUBJECTS.HEALTH_LAW,
-  mrp: 220,
-  salePrice: 110,
+  mrp: 300,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Mental Healthcare Act, 2017.",
@@ -1002,8 +946,7 @@ minesAndMineralsAct: {
     "खान और खनिज (विकास एवं विनियमन) अधिनियम, 1957",
   letter: "M",
   subject: SUBJECTS.MINING_LAW,
-  mrp: 250,
-  salePrice: 125,
+  mrp: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Mines and Minerals (Development and Regulation) Act, 1957.",
@@ -1018,8 +961,7 @@ motorVehiclesAct: {
   hindiTitle: "मोटर यान अधिनियम, 1988",
   letter: "M",
   subject: SUBJECTS.MOTOR_VEHICLE_LAW,
-  mrp: 350,
-  salePrice: 175,
+  mrp: 495,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Motor Vehicles Act, 1988.",
@@ -1034,8 +976,7 @@ muslimLaw: {
   hindiTitle: "मुस्लिम विधि",
   letter: "M",
   subject: SUBJECTS.PERSONAL_LAW,
-  mrp: 180,
-  salePrice: 90,
+  mrp: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of important Muslim Law statutes.",
@@ -1052,8 +993,7 @@ ndpsAct: {
     "स्वापक औषधि एवं मन:प्रभावी पदार्थ अधिनियम, 1985",
   letter: "N",
   subject: SUBJECTS.CRIMINAL_LAW,
-  mrp: 300,
-  salePrice: 150,
+  mrp: 260,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Narcotic Drugs and Psychotropic Substances Act, 1985.",
@@ -1068,8 +1008,7 @@ nationalHighwaysAct: {
   hindiTitle: "राष्ट्रीय राजमार्ग अधिनियम, 1956",
   letter: "N",
   subject: SUBJECTS.INFRASTRUCTURE_LAW,
-  mrp: 120,
-  salePrice: 60,
+  mrp: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the National Highways Act, 1956.",
@@ -1086,8 +1025,7 @@ nationalSecurityAct: {
     "राष्ट्रीय सुरक्षा अधिनियम एवं अन्य निवारक निरोध विधियां",
   letter: "N",
   subject: SUBJECTS.CONSTITUTIONAL_LAW,
-  mrp: 250,
-  salePrice: 125,
+  mrp: 140,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation containing the National Security Act and allied preventive detention laws.",
@@ -1102,8 +1040,7 @@ negotiableInstrumentsAct: {
   hindiTitle: "परक्राम्य लिखत अधिनियम, 1881",
   letter: "N",
   subject: SUBJECTS.COMMERCIAL_LAW,
-  mrp: 200,
-  salePrice: 100,
+  mrp: 160,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Negotiable Instruments Act, 1881.",
@@ -1118,8 +1055,7 @@ notariesAct: {
   hindiTitle: "नोटरी अधिनियम, 1952",
   letter: "N",
   subject: SUBJECTS.PROFESSIONAL_LAW,
-  mrp: 100,
-  salePrice: 50,
+  mrp: 150,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Notaries Act, 1952.",
@@ -1136,8 +1072,7 @@ occupationalSafetyCode: {
     "व्यावसायिक सुरक्षा, स्वास्थ्य एवं कार्य दशाएं संहिता, 2020",
   letter: "O",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 250,
-  salePrice: 125,
+  mrp: 290,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Occupational Safety, Health and Working Conditions Code, 2020.",
@@ -1152,8 +1087,7 @@ partnershipAct: {
   hindiTitle: "भारतीय साझेदारी अधिनियम, 1932",
   letter: "P",
   subject: SUBJECTS.COMMERCIAL_LAW,
-  mrp: 120,
-  salePrice: 60,
+  mrp: 100,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Partnership Act, 1932.",
@@ -1168,8 +1102,7 @@ patentsAct: {
   hindiTitle: "पेटेंट अधिनियम, 1970",
   letter: "P",
   subject: SUBJECTS.INTELLECTUAL_PROPERTY_LAW,
-  mrp: 300,
-  salePrice: 150,
+  mrp: 240,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Patents Act, 1970.",
@@ -1184,8 +1117,7 @@ pcpndtAct: {
   hindiTitle: "पीसीपीएनडीटी अधिनियम, 1994 तथा नियम",
   letter: "P",
   subject: SUBJECTS.MEDICAL_LAW,
-  mrp: 180,
-  salePrice: 90,
+  mrp: 290,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the PCPNDT Act, 1994 with Rules.",
@@ -1202,8 +1134,7 @@ pressRegistrationPeriodicalsAct: {
     "प्रेस एवं आवधिक प्रकाशन पंजीकरण अधिनियम, 2023 तथा नियम, 2024",
   letter: "P",
   subject: SUBJECTS.MEDIA_LAW,
-  mrp: 220,
-  salePrice: 110,
+  mrp: 100,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Press and Registration of Periodicals Act, 2023 with Rules, 2024.",
@@ -1219,7 +1150,6 @@ preventionOfCorruptionAct: {
   letter: "P",
   subject: SUBJECTS.CRIMINAL_LAW,
   mrp: 120,
-  salePrice: 60,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Prevention of Corruption Act, 1988.",
@@ -1237,7 +1167,6 @@ preventionOfCorruptionActCbi: {
   letter: "P",
   subject: SUBJECTS.CRIMINAL_LAW,
   mrp: 190,
-  salePrice: 95,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Prevention of Corruption Act, 1988 with Central Vigilance & CBI Acts.",
@@ -1253,7 +1182,6 @@ preventionMoneyLaunderingAct: {
   letter: "P",
   subject: SUBJECTS.FINANCIAL_LAW,
   mrp: 220,
-  salePrice: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Prevention of Money-Laundering Act, 2002.",
@@ -1269,7 +1197,6 @@ probationOfOffendersAct: {
   letter: "P",
   subject: SUBJECTS.CRIMINAL_LAW,
   mrp: 90,
-  salePrice: 45,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Probation of Offenders Act, 1958.",
@@ -1287,7 +1214,6 @@ prohibitionChildMarriageAct: {
   letter: "P",
   subject: SUBJECTS.FAMILY_LAW,
   mrp: 80,
-  salePrice: 40,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Prohibition of Child Marriage Act, 2006 with State Rules.",
@@ -1305,7 +1231,6 @@ pocsoActRules: {
   letter: "P",
   subject: SUBJECTS.CHILD_PROTECTION_LAW,
   mrp: 140,
-  salePrice: 70,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Protection of Children from Sexual Offences Act, 2012 with Rules.",
@@ -1321,7 +1246,6 @@ protectionHumanRightsAct: {
   letter: "P",
   subject: SUBJECTS.HUMAN_RIGHTS_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Protection of Human Rights Act, 1993.",
@@ -1339,7 +1263,6 @@ domesticViolenceActRules: {
   letter: "P",
   subject: SUBJECTS.WOMEN_AND_CHILD_LAW,
   mrp: 160,
-  salePrice: 80,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Protection of Women from Domestic Violence Act, 2005 with Rules.",
@@ -1357,7 +1280,6 @@ publicExaminationsAct: {
   letter: "P",
   subject: SUBJECTS.EDUCATION_LAW,
   mrp: 160,
-  salePrice: 80,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Public Examinations (Prevention of Unfair Means) Act, 2024.",
@@ -1373,7 +1295,6 @@ publicInterestLitigation: {
   letter: "P",
   subject: SUBJECTS.CONSTITUTIONAL_LAW,
   mrp: 120,
-  salePrice: 60,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation on Public Interest Litigation.",
@@ -1389,7 +1310,6 @@ railwaysAct: {
   letter: "R",
   subject: SUBJECTS.TRANSPORT_LAW,
   mrp: 320,
-  salePrice: 160,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Railways Act, 1989.",
@@ -1405,7 +1325,6 @@ railwayServicesPensionRules: {
   letter: "R",
   subject: SUBJECTS.SERVICE_LAW,
   mrp: 495,
-  salePrice: 248,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Railway Services (Pension) Rules, 2026.",
@@ -1422,8 +1341,7 @@ reraAct: {
     "भू-संपदा (विनियमन एवं विकास) अधिनियम, 2016",
   letter: "R",
   subject: SUBJECTS.PROPERTY_LAW,
-  mrp: 190,
-  salePrice: 95,
+  mrp: 200,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Real Estate (Regulation and Development) Act, 2016.",
@@ -1440,8 +1358,7 @@ representationPeopleAct: {
     "लोक प्रतिनिधित्व अधिनियम, 1950 एवं 1951",
   letter: "R",
   subject: SUBJECTS.ELECTION_LAW,
-  mrp: 480,
-  salePrice: 240,
+  mrp: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Representation of the People Acts, 1950 & 1951.",
@@ -1459,7 +1376,6 @@ landAcquisitionActLarge: {
   letter: "R",
   subject: SUBJECTS.LAND_LAW,
   mrp: 350,
-  salePrice: 175,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013.",
@@ -1477,7 +1393,6 @@ landAcquisitionActWith1894: {
   letter: "R",
   subject: SUBJECTS.LAND_LAW,
   mrp: 220,
-  salePrice: 110,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Land Acquisition Act, 2013 along with the Land Acquisition Act, 1894.",
@@ -1493,7 +1408,6 @@ rightToInformationAct: {
   letter: "R",
   subject: SUBJECTS.ADMINISTRATIVE_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Right to Information Act, 2005 with Rules.",
@@ -1511,7 +1425,6 @@ rightsOfPersonsWithDisabilitiesAct: {
   letter: "R",
   subject: SUBJECTS.SOCIAL_WELFARE_LAW,
   mrp: 260,
-  salePrice: 130,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Rights of Persons with Disabilities Act, 2016.",
@@ -1527,7 +1440,6 @@ saleOfGoodsAct: {
   letter: "S",
   subject: SUBJECTS.COMMERCIAL_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Sale of Goods Act, 1930.",
@@ -1545,7 +1457,6 @@ scstAtrocitiesAct: {
   letter: "S",
   subject: SUBJECTS.SOCIAL_JUSTICE_LAW,
   mrp: 190,
-  salePrice: 95,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989 with Rules.",
@@ -1563,7 +1474,6 @@ forestDwellersAct: {
   letter: "S",
   subject: SUBJECTS.FOREST_LAW,
   mrp: 160,
-  salePrice: 80,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Scheduled Tribes and Other Traditional Forest Dwellers Act, 2006.",
@@ -1581,7 +1491,6 @@ poshActRules: {
   letter: "S",
   subject: SUBJECTS.WOMEN_AND_CHILD_LAW,
   mrp: 110,
-  salePrice: 55,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 with Rules.",
@@ -1597,7 +1506,6 @@ specificReliefAct: {
   letter: "S",
   subject: SUBJECTS.CIVIL_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Specific Relief Act, 1963.",
@@ -1614,8 +1522,7 @@ successionActs: {
     "भारतीय उत्तराधिकार अधिनियम, 1925 तथा हिन्दू उत्तराधिकार अधिनियम, 1956",
   letter: "S",
   subject: SUBJECTS.FAMILY_LAW,
-  mrp: 400,
-  salePrice: 200,
+  mrp: 410,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Succession Act, 1925 together with the Hindu Succession Act, 1956.",
@@ -1632,8 +1539,7 @@ surrogacyArtActs: {
     "सरोगेसी (विनियमन) अधिनियम, 2021 तथा सहायक जननीय प्रौद्योगिकी अधिनियम, 2021",
   letter: "S",
   subject: SUBJECTS.MEDICAL_LAW,
-  mrp: 300,
-  salePrice: 150,
+  mrp: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Surrogacy (Regulation) Act, 2021 together with the Assisted Reproductive Technology Act, 2021.",
@@ -1649,7 +1555,6 @@ tradeMarksAct: {
   letter: "T",
   subject: SUBJECTS.INTELLECTUAL_PROPERTY_LAW,
   mrp: 225,
-  salePrice: 113,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Trade Marks Act, 1999.",
@@ -1667,7 +1572,6 @@ transplantationHumanOrgansAct: {
   letter: "T",
   subject: SUBJECTS.MEDICAL_LAW,
   mrp: 210,
-  salePrice: 105,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Transplantation of Human Organs and Tissues Act, 1994 with Rules.",
@@ -1683,7 +1587,6 @@ transferOfPropertyAct: {
   letter: "T",
   subject: SUBJECTS.PROPERTY_LAW,
   mrp: 210,
-  salePrice: 105,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Transfer of Property Act, 1882.",
@@ -1699,7 +1602,6 @@ indianTrustsAct: {
   letter: "T",
   subject: SUBJECTS.PROPERTY_LAW,
   mrp: 100,
-  salePrice: 50,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Trusts Act, 1882.",
@@ -1716,8 +1618,7 @@ uapaAct: {
     "विधिविरुद्ध क्रियाकलाप (निवारण) अधिनियम, 1967",
   letter: "U",
   subject: SUBJECTS.CRIMINAL_LAW,
-  mrp: 250,
-  salePrice: 125,
+  mrp: 180,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Unlawful Activities (Prevention) Act, 1967.",
@@ -1734,8 +1635,7 @@ vanSanrakshanAdhiniyam: {
     "वन (संरक्षण एवं संवर्धन) अधिनियम, 1980",
   letter: "V",
   subject: SUBJECTS.FOREST_LAW,
-  mrp: 230,
-  salePrice: 115,
+  mrp: 0,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Van (Sanrakshan Evam Samvardhan) Adhiniyam, 1980.",
@@ -1753,7 +1653,6 @@ viksitBharatGuaranteeForRozgarEvamAjivikaMissionAct: {
   letter: "V",
   subject: SUBJECTS.SOCIAL_WELFARE_LAW,
   mrp: 140,
-  salePrice: 70,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Viksit Bharat Guarantee for Rozgar & Ajeevika Mission (Gramin) Act, 2025.",
@@ -1771,7 +1670,6 @@ unifiedWaqfManagementEmpowermentEfficiencyDevelopmentAct: {
   letter: "W",
   subject: SUBJECTS.PERSONAL_LAW,
   mrp: 270,
-  salePrice: 135,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Unified Waqf Management, Empowerment, Efficiency & Development Act, 1995.",
@@ -1787,7 +1685,6 @@ wildLifeProtectionAct: {
   letter: "W",
   subject: SUBJECTS.ENVIRONMENTAL_LAW,
   mrp: 440,
-  salePrice: 220,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Wild Life (Protection) Act, 1972.",

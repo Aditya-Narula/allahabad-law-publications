@@ -3,10 +3,7 @@ import Image from "next/image";
 
 export default function BookCard({ slug, book }) {
 
-  const discount =
-    book.mrp > 0
-      ? Math.round(((book.mrp - book.salePrice) / book.mrp) * 100)
-      : 0;
+  const discount = book.discountPercent || 0;
 
   return (
     <div className="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
@@ -81,21 +78,17 @@ export default function BookCard({ slug, book }) {
 
         <div>
 
-          {book.mrp > book.salePrice && (
+          {discount > 0 && book.mrp > book.salePrice && (
+  <div className="flex items-center gap-3">
+    <span className="text-gray-400 line-through">
+      ₹{book.mrp}
+    </span>
 
-            <div className="flex items-center gap-3">
-
-              <span className="text-gray-400 line-through">
-                ₹{book.mrp}
-              </span>
-
-              <span className="rounded-full bg-red-600 px-2 py-1 text-xs font-semibold text-white">
-                {discount}% OFF
-              </span>
-
-            </div>
-
-          )}
+    <span className="rounded-full bg-red-600 px-2 py-1 text-xs font-semibold text-white">
+      {discount}% OFF
+    </span>
+  </div>
+)}
 
           <div className="mt-1 text-3xl font-bold text-amber-700">
             ₹{book.salePrice}
