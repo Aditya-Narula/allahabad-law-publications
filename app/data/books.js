@@ -24,10 +24,20 @@ export const books = Object.fromEntries(
   Object.entries(rawBooks).map(([slug, book]) => {
     const mrp = Number(book.mrp) || 0;
 
+    const discountPercent =
+      book.discountPercent !== undefined
+        ? Number(book.discountPercent)
+        : DEFAULT_DISCOUNT_PERCENT;
+
+    const validDiscountPercent = Math.min(
+      100,
+      Math.max(0, discountPercent)
+    );
+
     const salePrice =
       mrp > 0
         ? Math.round(
-            mrp * (1 - DEFAULT_DISCOUNT_PERCENT / 100)
+            mrp * (1 - validDiscountPercent / 100)
           )
         : 0;
 
@@ -35,7 +45,7 @@ export const books = Object.fromEntries(
       slug,
       {
         ...book,
-        discountPercent: DEFAULT_DISCOUNT_PERCENT,
+        discountPercent: validDiscountPercent,
         salePrice,
       },
     ];

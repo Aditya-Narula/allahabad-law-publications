@@ -163,12 +163,17 @@ export default async function BookPage({ params }) {
                       <td className="px-6 py-4">{book.binding}</td>
                     </tr>
 
-                    <tr className="border-b">
-                      <td className="font-semibold px-6 py-4 bg-white">
-                        Pages
-                      </td>
-                      <td className="px-6 py-4">{book.pages}</td>
-                    </tr>
+                    {book.pages && (
+  <tr className="border-b">
+    <td className="font-semibold px-6 py-4 bg-white">
+      Pages
+    </td>
+
+    <td className="px-6 py-4">
+      {book.pages}
+    </td>
+  </tr>
+)}
 
                     <tr className="border-b">
                       <td className="font-semibold px-6 py-4 bg-white">
