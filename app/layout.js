@@ -1,5 +1,6 @@
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
+import { CartProvider } from "@/app/context/CartContext";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -31,15 +32,13 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
       <body className="min-h-screen flex flex-col bg-white text-gray-900">
+        <CartProvider>
+          <Header />
 
-        <Header />
+          <main className="flex-1">{children}</main>
 
-        <main className="flex-1">
-          {children}
-        </main>
-
-        <Footer />
-
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
