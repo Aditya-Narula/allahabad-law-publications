@@ -383,17 +383,26 @@ competitionAct: {
     "competition act competition law anti trust cci",
 },
 
-constitutionOfIndia: {
+"constitution-of-india": {
   ...BARE_ACT_TEMPLATE,
+
   code: "BA026",
+
   englishTitle: "The Constitution of India",
+
   hindiTitle: "भारत का संविधान",
+
   letter: "C",
+
   subject: SUBJECTS.CONSTITUTIONAL_LAW,
+
   mrp: 650,
+
   cover: "/covers/alp-placeholder.jpg",
+
   description:
     "Diglot edition containing the Constitution of India along with the Constitution (One Hundred & Sixth Amendment) Act, 2023.",
+
   keywords:
     "constitution of india constitutional law fundamental rights parliament",
 },
