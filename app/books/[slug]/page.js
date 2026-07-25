@@ -109,13 +109,25 @@ export default async function BookPage({ params }) {
                 </span>
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-                {book.englishTitle}
-              </h1>
+              <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-3">
+  {book.englishTitle}
+</h1>
 
-              <h2 className="text-xl md:text-2xl text-amber-700 mb-6">
-                {book.hindiTitle}
-              </h2>
+{book.englishSubtitle && (
+  <p className="text-lg md:text-xl font-semibold leading-8 text-gray-700 mb-3">
+    {book.englishSubtitle}
+  </p>
+)}
+
+<h2 className="text-xl md:text-2xl text-amber-700 mb-3">
+  {book.hindiTitle}
+</h2>
+
+{book.hindiSubtitle && (
+  <p className="text-lg leading-8 text-gray-600 mb-6">
+    {book.hindiSubtitle}
+  </p>
+)}
 
               <div className="bg-gray-50 border rounded-2xl overflow-x-auto">
                 <div className="bg-gray-100 px-6 py-4 border-b">

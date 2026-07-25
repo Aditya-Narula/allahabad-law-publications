@@ -6,11 +6,15 @@ export const aibe = {
 
     code: "AIBE-DIGLOT-SET",
 
-    englishTitle:
-      "AIBE Diglot Set [Set of 22 Bare Acts without Notes containing 48 Laws]",
+    englishTitle: "AIBE Diglot Set",
 
-    hindiTitle:
-      "एआईबीई द्विभाषी सेट [टिप्पणियों के बिना 22 बेयर एक्ट्स का सेट, जिसमें 48 विधियाँ सम्मिलित हैं]",
+    hindiTitle: "एआईबीई द्विभाषी सेट",
+
+    englishSubtitle:
+      "Set of 22 Bare Acts without Notes containing 48 Laws",
+
+    hindiSubtitle:
+      "टिप्पणियों के बिना 22 बेयर एक्ट्स का सेट, जिसमें 48 विधियाँ सम्मिलित हैं",
 
     author: "R.K. Narula",
 
@@ -41,7 +45,7 @@ export const aibe = {
     cover: "/covers/aibeset.jpg",
 
     description:
-      "Set of 22 Bare Acts without Notes containing 48 Laws, specially designed for law students appearing in the All India Bar Examination.",
+      "A complete set of 22 Bare Acts without notes containing 48 laws, specially designed for law students and advocates appearing in the All India Bar Examination. The set contains English and Hindi text for convenient examination preparation and reference.",
 
     productType: "Book Set",
 
@@ -50,6 +54,6 @@ export const aibe = {
     numberOfLaws: 48,
 
     keywords:
-      "AIBE Diglot Set, AIBE Bare Acts Set, All India Bar Examination Books, 22 Bare Acts, 48 Laws, English Hindi Bare Acts",
+      "AIBE Diglot Set, AIBE Bare Acts Set, All India Bar Examination Books, 22 Bare Acts, 48 Laws, English Hindi Bare Acts, AIBE 2026",
   },
 };
