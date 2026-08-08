@@ -255,9 +255,17 @@ export default async function BookPage({ params }) {
                   💰 You Save ₹{savings}
                 </p>
 
-                <p className="mt-2 text-gray-600 text-sm">
-                  Delivery charges are included in the sale price.
-                </p>
+                <div className="mt-4 rounded-xl border border-amber-200 bg-white p-4">
+  <p className="text-sm font-semibold text-gray-800">
+    📦 Postal Charge Policy
+  </p>
+
+  <p className="mt-1 text-sm leading-6 text-gray-600">
+    ₹60 postal charge applies when the total discounted
+    order value is below ₹500. Postal delivery is free
+    on orders of ₹500 or more.
+  </p>
+</div>
               </div>
 
               <div className="grid gap-4 mt-8">

@@ -4,6 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/app/context/CartContext";
+import {
+  FREE_POSTAL_THRESHOLD,
+  POSTAL_CHARGE,
+  calculatePostalCharge,
+} from "@/app/config/shipping";
 
 const initialForm = {
   name: "",
@@ -37,6 +42,14 @@ export default function CartPage() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
 
+  const postalCharge = calculatePostalCharge(cartTotal);
+  const grandTotal = cartTotal + postalCharge;
+
+  const amountNeededForFreePostal =
+    cartTotal < FREE_POSTAL_THRESHOLD
+      ? FREE_POSTAL_THRESHOLD - cartTotal
+      : 0;
+
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -63,11 +76,13 @@ export default function CartPage() {
     if (!mobileDigits) {
       newErrors.mobile = "Please enter the mobile number.";
     } else if (mobileDigits.length !== 10) {
-      newErrors.mobile = "Please enter a valid 10-digit mobile number.";
+      newErrors.mobile =
+        "Please enter a valid 10-digit mobile number.";
     }
 
     if (!form.address.trim()) {
-      newErrors.address = "Please enter the full delivery address.";
+      newErrors.address =
+        "Please enter the full delivery address.";
     }
 
     if (!form.city.trim()) {
@@ -79,14 +94,16 @@ export default function CartPage() {
     }
 
     if (!/^\d{6}$/.test(form.pinCode.trim())) {
-      newErrors.pinCode = "Please enter a valid 6-digit PIN code.";
+      newErrors.pinCode =
+        "Please enter a valid 6-digit PIN code.";
     }
 
     if (
       form.email.trim() &&
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())
     ) {
-      newErrors.email = "Please enter a valid email address.";
+      newErrors.email =
+        "Please enter a valid email address.";
     }
 
     setErrors(newErrors);
@@ -97,7 +114,8 @@ export default function CartPage() {
   function createWhatsAppMessage() {
     const orderLines = cartItems
       .map((item, index) => {
-        const itemTotal = item.salePrice * item.quantity;
+        const itemTotal =
+          item.salePrice * item.quantity;
 
         return `${index + 1}. ${item.englishTitle}
 Edition: ${item.edition || "Not specified"}
@@ -107,6 +125,11 @@ Item total: ₹${formatPrice(itemTotal)}`;
       })
       .join("\n\n");
 
+    const postalLine =
+      postalCharge > 0
+        ? `Postal charges: ₹${formatPrice(postalCharge)}`
+        : "Postal charges: FREE";
+
     return `Hello Allahabad Law Publications,
 
 I would like to place the following order:
@@ -115,9 +138,13 @@ ${orderLines}
 
 ORDER SUMMARY
 Total books: ${totalQuantity}
+Books subtotal after discount: ₹${formatPrice(cartTotal)}
 Total savings: ₹${formatPrice(totalSavings)}
-Total payable: ₹${formatPrice(cartTotal)}
-Delivery charges: Included in the sale price
+${postalLine}
+TOTAL PAYABLE: ₹${formatPrice(grandTotal)}
+
+Postal charge policy:
+₹${POSTAL_CHARGE} postal charge applies when the discounted order value is below ₹${FREE_POSTAL_THRESHOLD}. Postal delivery is free on orders of ₹${FREE_POSTAL_THRESHOLD} or more.
 
 CUSTOMER DETAILS
 Name: ${form.name.trim()}
@@ -142,9 +169,10 @@ Thank you.`;
     }
 
     if (!validateForm()) {
-      const firstErrorField = document.querySelector(
-        "[data-form-error='true']"
-      );
+      const firstErrorField =
+        document.querySelector(
+          "[data-form-error='true']"
+        );
 
       firstErrorField?.scrollIntoView({
         behavior: "smooth",
@@ -156,18 +184,25 @@ Thank you.`;
 
     const message = createWhatsAppMessage();
 
-    const whatsappUrl = `https://wa.me/919235650006?text=${encodeURIComponent(
-      message
-    )}`;
+    const whatsappUrl =
+      `https://wa.me/919235650006?text=${encodeURIComponent(
+        message
+      )}`;
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
   }
 
   if (!isReady) {
     return (
       <main className="min-h-screen bg-gray-50 py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-lg text-gray-600">Loading your cart...</p>
+          <p className="text-lg text-gray-600">
+            Loading your cart...
+          </p>
         </div>
       </main>
     );
@@ -178,16 +213,32 @@ Thank you.`;
       <main className="min-h-screen bg-gray-50 py-16">
         <div className="max-w-3xl mx-auto px-6">
           <div className="rounded-3xl border bg-white p-10 text-center shadow-sm">
-            <div className="text-6xl mb-6">🛒</div>
+            <div className="text-6xl mb-6">
+              🛒
+            </div>
 
             <h1 className="text-4xl font-bold text-gray-900">
               Your cart is empty
             </h1>
 
             <p className="mt-4 text-lg text-gray-600">
-              Add legal books to your cart and place the entire order
-              through WhatsApp.
+              Add legal books to your cart and place
+              the entire order through WhatsApp.
             </p>
+
+            <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
+              <p className="text-sm font-semibold text-amber-800">
+                Postal charge policy
+              </p>
+
+              <p className="mt-1 text-sm text-gray-700">
+                ₹{POSTAL_CHARGE} postal charge applies
+                on discounted order values below ₹
+                {FREE_POSTAL_THRESHOLD}. Postal delivery
+                is free on orders of ₹
+                {FREE_POSTAL_THRESHOLD} or more.
+              </p>
+            </div>
 
             <Link
               href="/publications"
@@ -204,6 +255,7 @@ Thank you.`;
   return (
     <main className="min-h-screen bg-gray-50 py-10 md:py-14">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
+
         <div className="mb-8">
           <p className="text-sm font-semibold uppercase tracking-widest text-amber-700">
             Allahabad Law Publications
@@ -214,25 +266,56 @@ Thank you.`;
           </h1>
 
           <p className="mt-3 text-gray-600">
-            Review quantities, enter delivery details and send the
-            complete order through WhatsApp.
+            Review quantities, enter delivery details
+            and send the complete order through WhatsApp.
           </p>
         </div>
 
+        {/* POSTAL POLICY NOTICE */}
+
+        <div className="mb-8 rounded-2xl border border-amber-300 bg-amber-50 p-5">
+          <div className="flex gap-3">
+            <span className="text-2xl">
+              📦
+            </span>
+
+            <div>
+              <p className="font-bold text-gray-900">
+                Postal Charge Policy
+              </p>
+
+              <p className="mt-1 text-sm leading-6 text-gray-700">
+                A postal charge of ₹{POSTAL_CHARGE} is
+                applicable when the total discounted
+                order value is below ₹
+                {FREE_POSTAL_THRESHOLD}. Postal delivery
+                is free on orders of ₹
+                {FREE_POSTAL_THRESHOLD} or more.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid gap-8 lg:grid-cols-[1.4fr_0.8fr]">
+
           <section className="space-y-5">
+
             {cartItems.map((item) => (
               <article
                 key={item.slug}
                 className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
               >
                 <div className="grid gap-5 sm:grid-cols-[120px_1fr]">
+
                   <Link
                     href={`/books/${item.slug}`}
                     className="flex h-44 items-center justify-center rounded-xl bg-gray-50 p-3"
                   >
                     <Image
-                      src={item.cover || "/covers/alp-placeholder.jpg"}
+                      src={
+                        item.cover ||
+                        "/covers/alp-placeholder.jpg"
+                      }
                       alt={item.englishTitle}
                       width={110}
                       height={160}
@@ -241,7 +324,9 @@ Thank you.`;
                   </Link>
 
                   <div>
+
                     <div className="flex flex-col gap-4 md:flex-row md:justify-between">
+
                       <div>
                         <Link
                           href={`/books/${item.slug}`}
@@ -257,7 +342,9 @@ Thank you.`;
                         )}
 
                         <p className="mt-3 text-sm text-gray-600">
-                          Edition: {item.edition || "Not specified"}
+                          Edition:{" "}
+                          {item.edition ||
+                            "Not specified"}
                         </p>
                       </div>
 
@@ -267,16 +354,26 @@ Thank you.`;
                         </p>
 
                         <p className="text-2xl font-bold text-amber-700">
-                          ₹{formatPrice(item.salePrice)}
+                          ₹
+                          {formatPrice(
+                            item.salePrice
+                          )}
                         </p>
                       </div>
+
                     </div>
 
                     <div className="mt-6 flex flex-col gap-4 border-t pt-5 sm:flex-row sm:items-center sm:justify-between">
+
                       <div className="flex items-center gap-3">
+
                         <button
                           type="button"
-                          onClick={() => decreaseQuantity(item.slug)}
+                          onClick={() =>
+                            decreaseQuantity(
+                              item.slug
+                            )
+                          }
                           className="h-11 w-11 rounded-lg border bg-white text-xl font-bold hover:border-amber-600 hover:text-amber-700"
                           aria-label={`Decrease quantity of ${item.englishTitle}`}
                         >
@@ -299,29 +396,39 @@ Thank you.`;
 
                         <button
                           type="button"
-                          onClick={() => increaseQuantity(item.slug)}
+                          onClick={() =>
+                            increaseQuantity(
+                              item.slug
+                            )
+                          }
                           className="h-11 w-11 rounded-lg border bg-white text-xl font-bold hover:border-amber-600 hover:text-amber-700"
                           aria-label={`Increase quantity of ${item.englishTitle}`}
                         >
                           +
                         </button>
+
                       </div>
 
                       <div className="flex items-center justify-between gap-5 sm:justify-end">
+
                         <p className="font-bold text-gray-900">
                           Item total: ₹
                           {formatPrice(
-                            item.salePrice * item.quantity
+                            item.salePrice *
+                              item.quantity
                           )}
                         </p>
 
                         <button
                           type="button"
-                          onClick={() => removeItem(item.slug)}
+                          onClick={() =>
+                            removeItem(item.slug)
+                          }
                           className="text-sm font-semibold text-red-600 hover:text-red-700"
                         >
                           Remove
                         </button>
+
                       </div>
                     </div>
                   </div>
@@ -330,6 +437,7 @@ Thank you.`;
             ))}
 
             <div className="flex flex-wrap gap-3">
+
               <Link
                 href="/publications"
                 className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-800 transition hover:border-amber-600 hover:text-amber-700"
@@ -344,36 +452,91 @@ Thank you.`;
               >
                 Clear Cart
               </button>
+
             </div>
+
           </section>
 
           <aside className="space-y-6">
+
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 shadow-sm">
+
               <h2 className="text-2xl font-bold text-gray-900">
                 Order Summary
               </h2>
 
               <div className="mt-6 space-y-4">
-                <div className="flex justify-between gap-4">
-                  <span className="text-gray-600">Total books</span>
-                  <span className="font-bold">{totalQuantity}</span>
-                </div>
 
                 <div className="flex justify-between gap-4">
-                  <span className="text-gray-600">Your savings</span>
-                  <span className="font-bold text-green-700">
-                    ₹{formatPrice(totalSavings)}
+                  <span className="text-gray-600">
+                    Total books
+                  </span>
+
+                  <span className="font-bold">
+                    {totalQuantity}
                   </span>
                 </div>
 
                 <div className="flex justify-between gap-4">
                   <span className="text-gray-600">
-                    Delivery charges
+                    Books subtotal
                   </span>
-                  <span className="font-semibold text-green-700">
-                    Included
+
+                  <span className="font-bold">
+                    ₹{formatPrice(cartTotal)}
                   </span>
                 </div>
+
+                <div className="flex justify-between gap-4">
+                  <span className="text-gray-600">
+                    Your savings
+                  </span>
+
+                  <span className="font-bold text-green-700">
+                    ₹
+                    {formatPrice(
+                      totalSavings
+                    )}
+                  </span>
+                </div>
+
+                {/* POSTAL CHARGE APPEARS ONLY BELOW ₹500 */}
+
+                {postalCharge > 0 && (
+                  <>
+                    <div className="flex justify-between gap-4 border-t border-amber-200 pt-4">
+                      <span className="font-semibold text-gray-700">
+                        Postal charges
+                      </span>
+
+                      <span className="font-bold text-red-600">
+                        ₹
+                        {formatPrice(
+                          postalCharge
+                        )}
+                      </span>
+                    </div>
+
+                    <div className="rounded-xl bg-white/70 p-3 text-sm text-gray-700">
+                      Add books worth ₹
+                      {formatPrice(
+                        amountNeededForFreePostal
+                      )}{" "}
+                      more to get{" "}
+                      <strong>
+                        free postal delivery.
+                      </strong>
+                    </div>
+                  </>
+                )}
+
+                {/* FREE POSTAL MESSAGE */}
+
+                {postalCharge === 0 && (
+                  <div className="rounded-xl border border-green-200 bg-green-50 p-3 text-sm font-semibold text-green-700">
+                    ✓ Free postal delivery
+                  </div>
+                )}
 
                 <div className="border-t border-amber-200 pt-4">
                   <div className="flex justify-between gap-4">
@@ -382,17 +545,24 @@ Thank you.`;
                     </span>
 
                     <span className="text-3xl font-bold text-amber-700">
-                      ₹{formatPrice(cartTotal)}
+                      ₹
+                      {formatPrice(
+                        grandTotal
+                      )}
                     </span>
                   </div>
                 </div>
+
               </div>
             </div>
 
             <form
-              onSubmit={handleWhatsAppOrder}
+              onSubmit={
+                handleWhatsAppOrder
+              }
               className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
             >
+
               <h2 className="text-2xl font-bold text-gray-900">
                 Delivery Details
               </h2>
@@ -402,6 +572,7 @@ Thank you.`;
               </p>
 
               <div className="mt-6 space-y-5">
+
                 <FormField
                   label="Customer Name"
                   name="name"
@@ -432,6 +603,7 @@ Thank you.`;
                 />
 
                 <div className="grid gap-5 sm:grid-cols-2">
+
                   <FormField
                     label="City"
                     name="city"
@@ -449,6 +621,7 @@ Thank you.`;
                     error={errors.state}
                     required
                   />
+
                 </div>
 
                 <FormField
@@ -480,6 +653,7 @@ Thank you.`;
                   error={errors.notes}
                   placeholder="Any special instructions or queries"
                 />
+
               </div>
 
               <button
@@ -490,11 +664,15 @@ Thank you.`;
               </button>
 
               <p className="mt-3 text-center text-xs leading-5 text-gray-500">
-                Your order details will open in WhatsApp for your
-                review before sending.
+                Your order details will open in
+                WhatsApp for your review before
+                sending.
               </p>
+
             </form>
+
           </aside>
+
         </div>
       </div>
     </main>
@@ -513,13 +691,24 @@ function FormField({
   maxLength,
 }) {
   return (
-    <div data-form-error={error ? "true" : "false"}>
+    <div
+      data-form-error={
+        error ? "true" : "false"
+      }
+    >
+
       <label
         htmlFor={name}
         className="mb-2 block text-sm font-semibold text-gray-800"
       >
         {label}
-        {required && <span className="text-red-600"> *</span>}
+
+        {required && (
+          <span className="text-red-600">
+            {" "}
+            *
+          </span>
+        )}
       </label>
 
       <input
@@ -542,6 +731,7 @@ function FormField({
           {error}
         </p>
       )}
+
     </div>
   );
 }
@@ -556,13 +746,24 @@ function FormTextArea({
   placeholder = "",
 }) {
   return (
-    <div data-form-error={error ? "true" : "false"}>
+    <div
+      data-form-error={
+        error ? "true" : "false"
+      }
+    >
+
       <label
         htmlFor={name}
         className="mb-2 block text-sm font-semibold text-gray-800"
       >
         {label}
-        {required && <span className="text-red-600"> *</span>}
+
+        {required && (
+          <span className="text-red-600">
+            {" "}
+            *
+          </span>
+        )}
       </label>
 
       <textarea
@@ -584,6 +785,7 @@ function FormTextArea({
           {error}
         </p>
       )}
+
     </div>
   );
 }
