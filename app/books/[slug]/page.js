@@ -187,6 +187,66 @@ export default async function BookPage({ params }) {
   </tr>
 )}
 
+{book.productType && (
+  <tr className="border-b">
+    <td className="font-semibold px-6 py-4 bg-white">
+      Product Type
+    </td>
+
+    <td className="px-6 py-4">
+      {book.productType}
+    </td>
+  </tr>
+)}
+
+{book.numberOfBooks && (
+  <tr className="border-b">
+    <td className="font-semibold px-6 py-4 bg-white">
+      Books in Set
+    </td>
+
+    <td className="px-6 py-4">
+      {book.numberOfBooks}
+    </td>
+  </tr>
+)}
+
+{book.numberOfLaws && (
+  <tr className="border-b">
+    <td className="font-semibold px-6 py-4 bg-white">
+      Laws Covered
+    </td>
+
+    <td className="px-6 py-4">
+      {book.numberOfLaws}
+    </td>
+  </tr>
+)}
+
+{book.numberOfSolvedPapers && (
+  <tr className="border-b">
+    <td className="font-semibold px-6 py-4 bg-white">
+      Solved Papers
+    </td>
+
+    <td className="px-6 py-4">
+      {book.numberOfSolvedPapers}
+    </td>
+  </tr>
+)}
+
+{book.examCoverage && (
+  <tr className="border-b">
+    <td className="font-semibold px-6 py-4 bg-white">
+      Exam Coverage
+    </td>
+
+    <td className="px-6 py-4">
+      {book.examCoverage}
+    </td>
+  </tr>
+)}
+
                     <tr className="border-b">
                       <td className="font-semibold px-6 py-4 bg-white">
                         Category

@@ -48,6 +48,14 @@ const civilCount = Object.values(books).filter(
   (book) => book.category === "Civil Laws"
 ).length;
 
+const stateLawsCount = Object.values(books).filter(
+  (book) => book.category === "State Laws"
+).length;
+
+const competitiveExamBooksCount = Object.values(books).filter(
+  (book) => book.category === "Books for Competitive Exams"
+).length;
+
 const newArrivalsCount = Object.values(books).filter(
   (book) => book.newArrival === true
 ).length;
@@ -165,7 +173,11 @@ const paginatedBooks = filteredBooks.slice(
     <option value="Labour Laws">Labour Laws</option>
     <option value="Criminal Laws">Criminal Laws</option>
     <option value="Civil Laws">Civil Laws</option>
-    <option value="New Arrivals">New Arrivals</option>
+<option value="State Laws">State Laws</option>
+<option value="Books for Competitive Exams">
+  Books for Competitive Exams
+</option>
+<option value="New Arrivals">New Arrivals</option>
 
   </select>
 
@@ -188,23 +200,6 @@ const paginatedBooks = filteredBooks.slice(
   Showing {filteredBooks.length} {filteredBooks.length === 1 ? "Book" : "Books"}
 </p>
 
-        <div className="text-center mb-12">
-
-  <p className="uppercase tracking-[0.35em] text-amber-700 font-bold mb-3">
-    Catalogue
-  </p>
-
-  <h1 className="text-5xl md:text-6xl font-bold mb-5">
-    Explore Our Publications
-  </h1>
-
-  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-    Browse our collection of Bare Acts,
-    Commentaries, Judicial Service,
-    AIBE publications and legal reference books.
-  </p>
-
-</div>
 <section className="mb-16">
 
   <h2 className="text-3xl font-bold text-center mb-8">
@@ -315,6 +310,32 @@ const paginatedBooks = filteredBooks.slice(
 <p className="text-gray-500 mt-1 text-sm">
   {civilCount} Books
 </p>
+</Link>
+
+<Link
+  href="/categories/state-laws"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
+>
+  <h3 className="font-bold text-xl">
+    State Laws
+  </h3>
+
+  <p className="text-gray-500 mt-1 text-sm">
+    {stateLawsCount} Books
+  </p>
+</Link>
+
+<Link
+  href="/categories/books-for-competitive-exams"
+  className="group bg-white hover:bg-amber-50 rounded-2xl border border-gray-200 p-8 text-center block shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-500"
+>
+  <h3 className="font-bold text-xl">
+    Books for Competitive Exams
+  </h3>
+
+  <p className="text-gray-500 mt-1 text-sm">
+    {competitiveExamBooksCount} Books
+  </p>
 </Link>
 
 <Link

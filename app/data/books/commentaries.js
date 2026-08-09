@@ -97,4 +97,29 @@ export const commentaries = {
       "narula rai new criminal laws manual hindi paperback pocket",
   },
 
+  "criminal-incidents-investigation-procedure": {
+  ...COMMENTARY_TEMPLATE,
+  code: "CM006",
+  englishTitle:
+    "Criminal Incidents and Investigation Procedure",
+  hindiTitle:
+    "आपराधिक घटनाएँ और अन्वेषण प्रक्रिया",
+  hindiSubtitle:
+    "विधि विज्ञान सहित",
+  author: "अरुण कुमार पाठक",
+  language: "Hindi",
+  binding: "Paperback",
+  pages: 240,
+  isbn: "Not available",
+  mrp: 445,
+  featured: false,
+  newArrival: false,
+  cover:
+    "/covers/criminal-incidents-investigation-procedure.jpg",
+  description:
+    "Hindi commentary on criminal incidents and investigation procedure, including forensic science.",
+  keywords:
+    "आपराधिक घटनाएँ अन्वेषण प्रक्रिया विधि विज्ञान criminal investigation forensic science Arun Kumar Pathak",
+},
+
 };

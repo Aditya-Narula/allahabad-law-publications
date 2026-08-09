@@ -854,9 +854,29 @@ labourCodeNewLaws: {
     "labour codes code on wages industrial relations social security occupational safety",
 },
 
-legalMetrologyAct: {
+labourCode: {
   ...BARE_ACT_TEMPLATE,
   code: "BA056",
+  englishTitle: "Labour Code",
+  hindiTitle: "श्रमिक संहिता",
+  author: "Rai & Narula",
+  letter: "L",
+  pages: 1000,
+  isbn: "Not available",
+  mrp: 1395,
+  binding: "Hardbound",
+  featured: true,
+  newArrival: true,
+  cover: "/covers/labour-code.jpg",
+  description:
+    "Diglot edition containing the Code on Wages, 2019, the Industrial Relations Code, 2020, the Code on Social Security, 2020 and the Occupational Safety, Health and Working Conditions Code, 2020, along with comparative tables and notifications issued under the Codes.",
+  keywords:
+    "Labour Code श्रमिक संहिता Code on Wages 2019 Industrial Relations Code 2020 Code on Social Security 2020 Occupational Safety Health and Working Conditions Code 2020 labour laws Rai Narula",
+},
+
+legalMetrologyAct: {
+  ...BARE_ACT_TEMPLATE,
+  code: "BA057",
   englishTitle: "The Legal Metrology Act, 2009",
   hindiTitle: "विधिक माप विज्ञान अधिनियम, 2009",
   letter: "L",
@@ -871,7 +891,7 @@ legalMetrologyAct: {
 
 legalServicesAuthoritiesAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA057",
+  code: "BA058",
   englishTitle: "The Legal Services Authorities Act, 1987",
   hindiTitle: "विधिक सेवा प्राधिकरण अधिनियम, 1987",
   letter: "L",
@@ -886,7 +906,7 @@ legalServicesAuthoritiesAct: {
 
 limitationAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA058",
+  code: "BA059",
   englishTitle: "The Limitation Act, 1963",
   hindiTitle: "परिसीमा अधिनियम, 1963",
   letter: "L",
@@ -901,7 +921,7 @@ limitationAct: {
 
 maintenanceSeniorCitizensAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA059",
+  code: "BA060",
   englishTitle:
     "Maintenance and Welfare of Parents and Senior Citizens Act, 2007",
   hindiTitle:
@@ -918,7 +938,7 @@ maintenanceSeniorCitizensAct: {
 
 mediationAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA060",
+  code: "BA061",
   englishTitle: "The Mediation Act, 2023",
   hindiTitle: "मध्यस्थता अधिनियम, 2023",
   letter: "M",
@@ -933,7 +953,7 @@ mediationAct: {
 
 mentalHealthcareAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA061",
+  code: "BA062",
   englishTitle: "The Mental Healthcare Act, 2017",
   hindiTitle: "मानसिक स्वास्थ्य देखभाल अधिनियम, 2017",
   letter: "M",
@@ -948,7 +968,7 @@ mentalHealthcareAct: {
 
 minesAndMineralsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA062",
+  code: "BA063",
   englishTitle:
     "The Mines and Minerals (Development and Regulation) Act, 1957",
   hindiTitle:
@@ -965,7 +985,7 @@ minesAndMineralsAct: {
 
 motorVehiclesAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA063",
+  code: "BA064",
   englishTitle: "The Motor Vehicles Act, 1988",
   hindiTitle: "मोटर यान अधिनियम, 1988",
   letter: "M",
@@ -980,7 +1000,7 @@ motorVehiclesAct: {
 
 muslimLaw: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA064",
+  code: "BA065",
   englishTitle: "Muslim Law",
   hindiTitle: "मुस्लिम विधि",
   letter: "M",
@@ -995,7 +1015,7 @@ muslimLaw: {
 
 ndpsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA065",
+  code: "BA066",
   englishTitle:
     "The Narcotic Drugs and Psychotropic Substances Act, 1985",
   hindiTitle:
@@ -1012,7 +1032,7 @@ ndpsAct: {
 
 nationalHighwaysAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA066",
+  code: "BA067",
   englishTitle: "The National Highways Act, 1956",
   hindiTitle: "राष्ट्रीय राजमार्ग अधिनियम, 1956",
   letter: "N",
@@ -1027,7 +1047,7 @@ nationalHighwaysAct: {
 
 nationalSecurityAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA067",
+  code: "BA068",
   englishTitle:
     "National Security Act & Other Preventive Detention Laws",
   hindiTitle:
@@ -1044,7 +1064,7 @@ nationalSecurityAct: {
 
 negotiableInstrumentsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA068",
+  code: "BA069",
   englishTitle: "The Negotiable Instruments Act, 1881",
   hindiTitle: "परक्राम्य लिखत अधिनियम, 1881",
   letter: "N",
@@ -1059,7 +1079,7 @@ negotiableInstrumentsAct: {
 
 notariesAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA069",
+  code: "BA070",
   englishTitle: "The Notaries Act, 1952",
   hindiTitle: "नोटरी अधिनियम, 1952",
   letter: "N",
@@ -1074,7 +1094,7 @@ notariesAct: {
 
 occupationalSafetyCode: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA070",
+  code: "BA071",
   englishTitle:
     "Occupational Safety, Health and Working Conditions Code, 2020",
   hindiTitle:
@@ -1091,7 +1111,7 @@ occupationalSafetyCode: {
 
 partnershipAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA071",
+  code: "BA072",
   englishTitle: "The Indian Partnership Act, 1932",
   hindiTitle: "भारतीय साझेदारी अधिनियम, 1932",
   letter: "P",
@@ -1106,7 +1126,7 @@ partnershipAct: {
 
 patentsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA072",
+  code: "BA073",
   englishTitle: "The Patents Act, 1970",
   hindiTitle: "पेटेंट अधिनियम, 1970",
   letter: "P",
@@ -1121,7 +1141,7 @@ patentsAct: {
 
 pcpndtAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA073",
+  code: "BA074",
   englishTitle: "The PCPNDT Act, 1994 with Rules",
   hindiTitle: "पीसीपीएनडीटी अधिनियम, 1994 तथा नियम",
   letter: "P",
@@ -1136,7 +1156,7 @@ pcpndtAct: {
 
 pressRegistrationPeriodicalsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA074",
+  code: "BA075",
   englishTitle:
     "Press and Registration of Periodicals Act, 2023 with Rules, 2024",
   hindiTitle:
@@ -1153,7 +1173,7 @@ pressRegistrationPeriodicalsAct: {
 
 preventionOfCorruptionAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA075",
+  code: "BA076",
   englishTitle: "The Prevention of Corruption Act, 1988",
   hindiTitle: "भ्रष्टाचार निवारण अधिनियम, 1988",
   letter: "P",
@@ -1168,7 +1188,7 @@ preventionOfCorruptionAct: {
 
 preventionOfCorruptionActCbi: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA076",
+  code: "BA077",
   englishTitle:
     "The Prevention of Corruption Act, 1988 with Central Vigilance & CBI Acts",
   hindiTitle:
@@ -1185,7 +1205,7 @@ preventionOfCorruptionActCbi: {
 
 preventionMoneyLaunderingAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA077",
+  code: "BA078",
   englishTitle: "The Prevention of Money-Laundering Act, 2002",
   hindiTitle: "धन-शोधन निवारण अधिनियम, 2002",
   letter: "P",
@@ -1200,7 +1220,7 @@ preventionMoneyLaunderingAct: {
 
 probationOfOffendersAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA078",
+  code: "BA079",
   englishTitle: "The Probation of Offenders Act, 1958",
   hindiTitle: "अपराधी परिवीक्षा अधिनियम, 1958",
   letter: "P",
@@ -1215,7 +1235,7 @@ probationOfOffendersAct: {
 
 prohibitionChildMarriageAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA079",
+  code: "BA080",
   englishTitle:
     "The Prohibition of Child Marriage Act, 2006 with State Rules",
   hindiTitle:
@@ -1232,7 +1252,7 @@ prohibitionChildMarriageAct: {
 
 pocsoActRules: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA080",
+  code: "BA081",
   englishTitle:
     "The Protection of Children from Sexual Offences Act, 2012 with Rules",
   hindiTitle:
@@ -1249,7 +1269,7 @@ pocsoActRules: {
 
 protectionHumanRightsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA081",
+  code: "BA082",
   englishTitle: "The Protection of Human Rights Act, 1993",
   hindiTitle: "मानव अधिकार संरक्षण अधिनियम, 1993",
   letter: "P",
@@ -1264,7 +1284,7 @@ protectionHumanRightsAct: {
 
 domesticViolenceActRules: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA082",
+  code: "BA083",
   englishTitle:
     "The Protection of Women from Domestic Violence Act, 2005 with Rules",
   hindiTitle:
@@ -1279,26 +1299,31 @@ domesticViolenceActRules: {
     "domestic violence act women child law protection women domestic violence",
 },
 
-publicExaminationsAct: {
+publicExaminationsPreventionOfUnfairMeansAct2024: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA083",
+  code: "BA084",
   englishTitle:
     "The Public Examinations (Prevention of Unfair Means) Act, 2024",
   hindiTitle:
-    "लोक परीक्षा (अनुचित साधन निवारण) अधिनियम, 2024",
+    "लोक परीक्षा (अनुचित साधनों की रोकथाम) अधिनियम, 2024",
   letter: "P",
-  subject: SUBJECTS.EDUCATION_LAW,
-  mrp: 160,
-  cover: "/covers/alp-placeholder.jpg",
+  subject: SUBJECTS.GENERAL_LAW,
+  pages: 135,
+  isbn: "Not available",
+  mrp: 225,
+  featured: false,
+  newArrival: false,
+  cover:
+    "/covers/public-examinations-prevention-unfair-means-act-2024.jpg",
   description:
-    "Diglot edition containing the Public Examinations (Prevention of Unfair Means) Act, 2024.",
+    "Diglot edition containing the Public Examinations (Prevention of Unfair Means) Act, 2024, as amended, along with the Central Rules and related State enactments.",
   keywords:
-    "public examinations act unfair means education law examinations",
+    "public examinations prevention of unfair means act 2024 public examinations act unfair means examination law central rules state acts",
 },
 
 publicInterestLitigation: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA084",
+  code: "BA085",
   englishTitle: "Public Interest Litigation",
   hindiTitle: "जनहित याचिका",
   letter: "P",
@@ -1313,7 +1338,7 @@ publicInterestLitigation: {
 
 railwaysAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA085",
+  code: "BA086",
   englishTitle: "The Railways Act, 1989",
   hindiTitle: "रेल अधिनियम, 1989",
   letter: "R",
@@ -1328,7 +1353,7 @@ railwaysAct: {
 
 railwayServicesPensionRules: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA086",
+  code: "BA087",
   englishTitle: "The Railway Services (Pension) Rules, 2026",
   hindiTitle: "रेल सेवा (पेंशन) नियम, 2026",
   letter: "R",
@@ -1343,7 +1368,7 @@ railwayServicesPensionRules: {
 
 reraAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA087",
+  code: "BA088",
   englishTitle:
     "The Real Estate (Regulation and Development) Act, 2016",
   hindiTitle:
@@ -1360,7 +1385,7 @@ reraAct: {
 
 representationPeopleAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA088",
+  code: "BA089",
   englishTitle:
     "The Representation of the People Act, 1950 & 1951",
   hindiTitle:
@@ -1377,7 +1402,7 @@ representationPeopleAct: {
 
 landAcquisitionActLarge: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA089",
+  code: "BA090",
   englishTitle:
     "Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013",
   hindiTitle:
@@ -1394,7 +1419,7 @@ landAcquisitionActLarge: {
 
 landAcquisitionActWith1894: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA090",
+  code: "BA091",
   englishTitle:
     "Land Acquisition Act, 2013 with Land Acquisition Act, 1894",
   hindiTitle:
@@ -1411,7 +1436,7 @@ landAcquisitionActWith1894: {
 
 rightToInformationAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA091",
+  code: "BA092",
   englishTitle: "The Right to Information Act, 2005",
   hindiTitle: "सूचना का अधिकार अधिनियम, 2005",
   letter: "R",
@@ -1426,7 +1451,7 @@ rightToInformationAct: {
 
 rightsOfPersonsWithDisabilitiesAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA092",
+  code: "BA093",
   englishTitle:
     "The Rights of Persons with Disabilities Act, 2016",
   hindiTitle:
@@ -1443,7 +1468,7 @@ rightsOfPersonsWithDisabilitiesAct: {
 
 saleOfGoodsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA093",
+  code: "BA094",
   englishTitle: "The Sale of Goods Act, 1930",
   hindiTitle: "माल-विक्रय अधिनियम, 1930",
   letter: "S",
@@ -1458,7 +1483,7 @@ saleOfGoodsAct: {
 
 scstAtrocitiesAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA094",
+  code: "BA095",
   englishTitle:
     "The Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989",
   hindiTitle:
@@ -1475,7 +1500,7 @@ scstAtrocitiesAct: {
 
 forestDwellersAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA095",
+  code: "BA096",
   englishTitle:
     "The Scheduled Tribes and Other Traditional Forest Dwellers Act, 2006",
   hindiTitle:
@@ -1492,7 +1517,7 @@ forestDwellersAct: {
 
 poshActRules: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA096",
+  code: "BA097",
   englishTitle:
     "The Sexual Harassment of Women at Workplace Act, 2013 with Rules",
   hindiTitle:
@@ -1509,7 +1534,7 @@ poshActRules: {
 
 specificReliefAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA097",
+  code: "BA098",
   englishTitle: "The Specific Relief Act, 1963",
   hindiTitle: "विशिष्ट अनुतोष अधिनियम, 1963",
   letter: "S",
@@ -1524,7 +1549,7 @@ specificReliefAct: {
 
 successionActs: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA098",
+  code: "BA099",
   englishTitle:
     "The Indian Succession Act, 1925 with Hindu Succession Act, 1956",
   hindiTitle:
@@ -1541,7 +1566,7 @@ successionActs: {
 
 surrogacyArtActs: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA099",
+  code: "BA100",
   englishTitle:
     "The Surrogacy (Regulation) Act, 2021 with Assisted Reproductive Technology Act, 2021",
   hindiTitle:
@@ -1558,7 +1583,7 @@ surrogacyArtActs: {
 
 tradeMarksAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA100",
+  code: "BA101",
   englishTitle: "The Trade Marks Act, 1999",
   hindiTitle: "व्यापार चिह्न अधिनियम, 1999",
   letter: "T",
@@ -1573,7 +1598,7 @@ tradeMarksAct: {
 
 transplantationHumanOrgansAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA101",
+  code: "BA102",
   englishTitle:
     "The Transplantation of Human Organs and Tissues Act, 1994 with Rules",
   hindiTitle:
@@ -1590,7 +1615,7 @@ transplantationHumanOrgansAct: {
 
 transferOfPropertyAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA102",
+  code: "BA103",
   englishTitle: "The Transfer of Property Act, 1882",
   hindiTitle: "सम्पत्ति-अन्तरण अधिनियम, 1882",
   letter: "T",
@@ -1605,7 +1630,7 @@ transferOfPropertyAct: {
 
 indianTrustsAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA103",
+  code: "BA104",
   englishTitle: "The Indian Trusts Act, 1882",
   hindiTitle: "भारतीय न्यास अधिनियम, 1882",
   letter: "T",
@@ -1620,7 +1645,7 @@ indianTrustsAct: {
 
 uapaAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA104",
+  code: "BA105",
   englishTitle:
     "The Unlawful Activities (Prevention) Act, 1967",
   hindiTitle:
@@ -1637,7 +1662,7 @@ uapaAct: {
 
 vanSanrakshanAdhiniyam: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA105",
+  code: "BA106",
   englishTitle:
     "The Van (Sanrakshan Evam Samvardhan) Adhiniyam, 1980",
   hindiTitle:
@@ -1654,7 +1679,7 @@ vanSanrakshanAdhiniyam: {
 
 viksitBharatGuaranteeForRozgarEvamAjivikaMissionAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA106",
+  code: "BA107",
   englishTitle:
     "The Viksit Bharat Guarantee for Rozgar & Ajeevika Mission (Gramin): VBGRAMG Act, 2025",
   hindiTitle:
@@ -1671,7 +1696,7 @@ viksitBharatGuaranteeForRozgarEvamAjivikaMissionAct: {
 
 unifiedWaqfManagementEmpowermentEfficiencyDevelopmentAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA107",
+  code: "BA108",
   englishTitle:
     "The Unified Waqf Management, Empowerment, Efficiency & Development Act, 1995",
   hindiTitle:
@@ -1688,7 +1713,7 @@ unifiedWaqfManagementEmpowermentEfficiencyDevelopmentAct: {
 
 wildLifeProtectionAct: {
   ...BARE_ACT_TEMPLATE,
-  code: "BA108",
+  code: "BA109",
   englishTitle: "The Wild Life (Protection) Act, 1972",
   hindiTitle: "वन्य जीव (संरक्षण) अधिनियम, 1972",
   letter: "W",

@@ -71,7 +71,7 @@ export const aibe = {
     ...AIBE_TEMPLATE,
 
     englishTitle:
-      "All India Bar Examination Solved Papers",
+  "All India Bar Examination Solved Papers – English Edition",
 
     hindiTitle: "",
 
@@ -80,7 +80,7 @@ export const aibe = {
 
     author: "R.K. Narula",
 
-    edition: "2026 Edition",
+    edition: "Edition 2026",
 
     publicationYear: 2026,
 
@@ -128,7 +128,7 @@ export const aibe = {
     ...AIBE_TEMPLATE,
 
     englishTitle:
-      "All India Bar Examination Solved Papers",
+  "All India Bar Examination Solved Papers – Diglot Edition",
 
     hindiTitle:
       "आल इंडिया बार परीक्षा सॉल्व्ड पेपर्स",

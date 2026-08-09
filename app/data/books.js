@@ -6,6 +6,8 @@ import { labourLaws } from "./books/labourLaws";
 import { judicialService } from "./books/judicialService";
 import { llbTextbooks } from "./books/llbTextbooks";
 import { aibe } from "./books/aibe";
+import { stateLaws } from "./books/stateLaws";
+import { competitiveExamBooks } from "./books/competitiveExamBooks";
 
 export const DEFAULT_DISCOUNT_PERCENT = 40;
 
@@ -18,6 +20,8 @@ const rawBooks = {
   ...judicialService,
   ...llbTextbooks,
   ...aibe,
+  ...stateLaws,
+  ...competitiveExamBooks,
 };
 
 export const books = Object.fromEntries(

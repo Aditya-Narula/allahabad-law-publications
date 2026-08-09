@@ -7,4 +7,6 @@ export const CATEGORIES = {
   JUDICIAL_SERVICE: "Judicial Service",
   AIBE: "AIBE",
   LLB: "LL.B. Textbooks",
+  STATE_LAWS: "State Laws",
+  COMPETITIVE_EXAM_BOOKS: "Books for Competitive Exams",
 };

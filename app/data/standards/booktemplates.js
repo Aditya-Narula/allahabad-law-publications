@@ -6,7 +6,6 @@ import { LANGUAGES } from "./languages";
 import { PUBLISHERS } from "./publishers";
 
 export const BOOK_TEMPLATE = {
-
   code: "",
 
   englishTitle: "",
@@ -49,7 +48,6 @@ export const BOOK_TEMPLATE = {
   description: "",
 
   keywords: "",
-
 };
 
 export const BARE_ACT_TEMPLATE = {
@@ -90,4 +88,14 @@ export const LLB_TEMPLATE = {
 export const AIBE_TEMPLATE = {
   ...BOOK_TEMPLATE,
   category: CATEGORIES.AIBE,
+};
+
+export const STATE_LAW_TEMPLATE = {
+  ...BOOK_TEMPLATE,
+  category: CATEGORIES.STATE_LAWS,
+};
+
+export const COMPETITIVE_EXAM_BOOK_TEMPLATE = {
+  ...BOOK_TEMPLATE,
+  category: CATEGORIES.COMPETITIVE_EXAM_BOOKS,
 };
