@@ -55,7 +55,9 @@ export const bareActs = {
 
   subject: SUBJECTS.ADR,
 
-  mrp: 200,
+  mrp: 210,
+
+  edition: "2027 Edition",
 
   description:
     "Diglot edition containing the Arbitration and Conciliation Act, 1996 with updated statutory provisions.",
@@ -113,7 +115,9 @@ export const bareActs = {
 
   subject: SUBJECTS.COMMERCIAL_LAW,
 
-  mrp: 230,
+  mrp: 250,
+
+  edition: "2027 Edition",
 
   description:
     "Diglot edition containing the Banning of Unregulated Deposit Schemes Act, 2019.",
@@ -133,7 +137,9 @@ export const bareActs = {
 
   subject: SUBJECTS.CRIMINAL_PROCEDURE,
 
-  mrp: 775,
+  mrp: 795,
+
+  edition: "2027 Edition",
 
   featured: true,
 
@@ -159,8 +165,9 @@ export const bareActs = {
 
   subject: SUBJECTS.CRIMINAL_LAW,
 
-  mrp: 495,
+  mrp: 515,
 
+  edition: "2027 Edition",
 
   featured: true,
 
@@ -186,8 +193,9 @@ export const bareActs = {
 
   subject: SUBJECTS.LAW_OF_EVIDENCE,
 
-  mrp: 240,
+  mrp: 250,
 
+  edition: "2027 Edition",
 
   featured: true,
 
@@ -235,7 +243,9 @@ bondedLabourAct: {
 
   subject: SUBJECTS.LABOUR_LAW,
 
-  mrp: 70,
+  mrp: 110,
+
+  edition: "2027 Edition",
 
   description:
     "Diglot edition containing the Bonded Labour System (Abolition) Act, 1976 together with the Rules.",
@@ -318,7 +328,7 @@ codeOnSocialSecurity: {
   hindiTitle: "सामाजिक सुरक्षा संहिता, 2020",
   letter: "C",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 380,
+  mrp: 495,
   description:
     "Diglot edition containing the Code on Social Security, 2020.",
   keywords:
@@ -396,7 +406,7 @@ competitionAct: {
 
   subject: SUBJECTS.CONSTITUTIONAL_LAW,
 
-  mrp: 650,
+  mrp: 660,
 
   cover: "/covers/alp-placeholder.jpg",
 
@@ -462,7 +472,8 @@ indianContractAct: {
   hindiTitle: "भारतीय संविदा अधिनियम, 1872",
   letter: "C",
   subject: SUBJECTS.CONTRACT_LAW,
-  mrp: 220,
+  mrp: 225,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Contract Act, 1872.",
@@ -555,7 +566,8 @@ easementsAct: {
   hindiTitle: "भारतीय सुखाचार अधिनियम, 1882",
   letter: "E",
   subject: SUBJECTS.PROPERTY_LAW,
-  mrp: 100,
+  mrp: 110,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Easements Act, 1882.",
@@ -585,7 +597,8 @@ environmentalLaw: {
   hindiTitle: "पर्यावरण विधि",
   letter: "E",
   subject: SUBJECTS.ENVIRONMENTAL_LAW,
-  mrp: 280,
+  mrp: 295,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Comprehensive diglot edition on Environmental Law.",
@@ -600,7 +613,8 @@ environmentWildlifeLaws: {
   hindiTitle: "पर्यावरण तथा वन्य जीव विधियां",
   letter: "E",
   subject: SUBJECTS.ENVIRONMENTAL_LAW,
-  mrp: 700,
+  mrp: 725,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of Environmental and Wild Life Laws.",
@@ -631,6 +645,7 @@ familyLaws: {
   letter: "F",
   subject: SUBJECTS.FAMILY_LAW,
   mrp: 220,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of major Family Laws in diglot format.",
@@ -707,7 +722,8 @@ hinduLaw: {
   hindiTitle: "हिन्दू विधि",
   letter: "H",
   subject: SUBJECTS.FAMILY_LAW,
-  mrp: 180,
+  mrp: 190,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of important Hindu Law statutes.",
@@ -724,7 +740,8 @@ immoralTrafficAct: {
     "अनैतिक व्यापार (निवारण) अधिनियम, 1956",
   letter: "I",
   subject: SUBJECTS.CRIMINAL_LAW,
-  mrp: 100,
+  mrp: 110,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Immoral Traffic (Prevention) Act, 1956.",
@@ -739,7 +756,7 @@ industrialRelationsCode: {
   hindiTitle: "औद्योगिक संबंध संहिता, 2020",
   letter: "I",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 220,
+  mrp: 295,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Industrial Relations Code, 2020.",
@@ -786,7 +803,8 @@ intellectualPropertyLaws: {
   hindiTitle: "बौद्धिक संपदा विधियां",
   letter: "I",
   subject: SUBJECTS.INTELLECTUAL_PROPERTY_LAW,
-  mrp: 480,
+  mrp: 495,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of Intellectual Property Laws.",
@@ -801,7 +819,8 @@ juvenileJusticeAct: {
   hindiTitle: "किशोर न्याय अधिनियम, 2015",
   letter: "J",
   subject: SUBJECTS.JUVENILE_JUSTICE,
-  mrp: 200,
+  mrp: 220,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Juvenile Justice (Care and Protection of Children) Act, 2015.",
@@ -816,7 +835,8 @@ juvenileJusticeActRules: {
   hindiTitle: "किशोर न्याय अधिनियम, 2015 तथा नियम",
   letter: "J",
   subject: SUBJECTS.JUVENILE_JUSTICE,
-  mrp: 700,
+  mrp: 725,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Juvenile Justice (Care and Protection of Children) Act, 2015 with Rules.",
@@ -846,7 +866,8 @@ labourCodeNewLaws: {
   hindiTitle: "श्रम संहिताएं",
   letter: "L",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 1095,
+  mrp: 1100,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of the New Labour Codes.",
@@ -928,7 +949,8 @@ maintenanceSeniorCitizensAct: {
     "माता-पिता एवं वरिष्ठ नागरिक भरण-पोषण अधिनियम, 2007",
   letter: "M",
   subject: SUBJECTS.SOCIAL_WELFARE_LAW,
-  mrp: 90,
+  mrp: 100,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Maintenance and Welfare of Parents and Senior Citizens Act, 2007.",
@@ -1006,6 +1028,7 @@ muslimLaw: {
   letter: "M",
   subject: SUBJECTS.PERSONAL_LAW,
   mrp: 110,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation of important Muslim Law statutes.",
@@ -1022,7 +1045,8 @@ ndpsAct: {
     "स्वापक औषधि एवं मन:प्रभावी पदार्थ अधिनियम, 1985",
   letter: "N",
   subject: SUBJECTS.CRIMINAL_LAW,
-  mrp: 260,
+  mrp: 270,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Narcotic Drugs and Psychotropic Substances Act, 1985.",
@@ -1037,7 +1061,8 @@ nationalHighwaysAct: {
   hindiTitle: "राष्ट्रीय राजमार्ग अधिनियम, 1956",
   letter: "N",
   subject: SUBJECTS.INFRASTRUCTURE_LAW,
-  mrp: 0,
+  mrp: 550,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the National Highways Act, 1956.",
@@ -1054,7 +1079,8 @@ nationalSecurityAct: {
     "राष्ट्रीय सुरक्षा अधिनियम एवं अन्य निवारक निरोध विधियां",
   letter: "N",
   subject: SUBJECTS.CONSTITUTIONAL_LAW,
-  mrp: 140,
+  mrp: 150,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Compilation containing the National Security Act and allied preventive detention laws.",
@@ -1069,7 +1095,8 @@ negotiableInstrumentsAct: {
   hindiTitle: "परक्राम्य लिखत अधिनियम, 1881",
   letter: "N",
   subject: SUBJECTS.COMMERCIAL_LAW,
-  mrp: 160,
+  mrp: 170,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Negotiable Instruments Act, 1881.",
@@ -1101,7 +1128,7 @@ occupationalSafetyCode: {
     "व्यावसायिक सुरक्षा, स्वास्थ्य एवं कार्य दशाएं संहिता, 2020",
   letter: "O",
   subject: SUBJECTS.LABOUR_LAW,
-  mrp: 290,
+  mrp: 445,
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Occupational Safety, Health and Working Conditions Code, 2020.",
@@ -1131,7 +1158,8 @@ patentsAct: {
   hindiTitle: "पेटेंट अधिनियम, 1970",
   letter: "P",
   subject: SUBJECTS.INTELLECTUAL_PROPERTY_LAW,
-  mrp: 240,
+  mrp: 250,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Patents Act, 1970.",
@@ -1146,7 +1174,8 @@ pcpndtAct: {
   hindiTitle: "पीसीपीएनडीटी अधिनियम, 1994 तथा नियम",
   letter: "P",
   subject: SUBJECTS.MEDICAL_LAW,
-  mrp: 290,
+  mrp: 300,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the PCPNDT Act, 1994 with Rules.",
@@ -1163,7 +1192,8 @@ pressRegistrationPeriodicalsAct: {
     "प्रेस एवं आवधिक प्रकाशन पंजीकरण अधिनियम, 2023 तथा नियम, 2024",
   letter: "P",
   subject: SUBJECTS.MEDIA_LAW,
-  mrp: 100,
+  mrp: 110,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Press and Registration of Periodicals Act, 2023 with Rules, 2024.",
@@ -1274,7 +1304,8 @@ protectionHumanRightsAct: {
   hindiTitle: "मानव अधिकार संरक्षण अधिनियम, 1993",
   letter: "P",
   subject: SUBJECTS.HUMAN_RIGHTS_LAW,
-  mrp: 100,
+  mrp: 110,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Protection of Human Rights Act, 1993.",
@@ -1291,7 +1322,8 @@ domesticViolenceActRules: {
     "घरेलू हिंसा से महिलाओं का संरक्षण अधिनियम, 2005 तथा नियम",
   letter: "P",
   subject: SUBJECTS.WOMEN_AND_CHILD_LAW,
-  mrp: 160,
+  mrp: 170,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Protection of Women from Domestic Violence Act, 2005 with Rules.",
@@ -1311,6 +1343,7 @@ publicExaminationsPreventionOfUnfairMeansAct2024: {
   pages: 135,
   isbn: "Not available",
   mrp: 225,
+  edition: "2027 Edition",
   featured: false,
   newArrival: false,
   cover:
@@ -1474,6 +1507,7 @@ saleOfGoodsAct: {
   letter: "S",
   subject: SUBJECTS.COMMERCIAL_LAW,
   mrp: 100,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Sale of Goods Act, 1930.",
@@ -1490,7 +1524,8 @@ scstAtrocitiesAct: {
     "अनुसूचित जाति एवं अनुसूचित जनजाति (अत्याचार निवारण) अधिनियम, 1989",
   letter: "S",
   subject: SUBJECTS.SOCIAL_JUSTICE_LAW,
-  mrp: 190,
+  mrp: 200,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989 with Rules.",
@@ -1524,7 +1559,8 @@ poshActRules: {
     "कार्यस्थल पर महिलाओं का लैंगिक उत्पीड़न अधिनियम, 2013 तथा नियम",
   letter: "S",
   subject: SUBJECTS.WOMEN_AND_CHILD_LAW,
-  mrp: 110,
+  mrp: 120,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 with Rules.",
@@ -1539,7 +1575,8 @@ specificReliefAct: {
   hindiTitle: "विशिष्ट अनुतोष अधिनियम, 1963",
   letter: "S",
   subject: SUBJECTS.CIVIL_LAW,
-  mrp: 100,
+  mrp: 110,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Specific Relief Act, 1963.",
@@ -1635,7 +1672,8 @@ indianTrustsAct: {
   hindiTitle: "भारतीय न्यास अधिनियम, 1882",
   letter: "T",
   subject: SUBJECTS.PROPERTY_LAW,
-  mrp: 100,
+  mrp: 110,
+  edition: "2027 Edition",
   cover: "/covers/alp-placeholder.jpg",
   description:
     "Diglot edition containing the Indian Trusts Act, 1882.",

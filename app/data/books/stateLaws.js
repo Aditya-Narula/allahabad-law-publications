@@ -144,6 +144,7 @@ export const stateLaws = {
   pages: 111,
   isbn: "Not available",
   mrp: 180,
+  edition: "2027 Edition",
   featured: false,
   newArrival: true,
   cover:
