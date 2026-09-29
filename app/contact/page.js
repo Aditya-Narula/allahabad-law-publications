@@ -86,7 +86,7 @@ export default function ContactPage() {
                 </h3>
 
                 <p className="text-gray-600">
-                  info@allahabadlawpublications.com
+                  info@allahabadlawpublications.co.in
                 </p>
 
               </div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
               </Link>
 
               <Link
-                href="mailto:info@allahabadlawpublications.com"
+                href="mailto:info@allahabadlawpublications.co.in"
                 className="block w-full bg-amber-700 hover:bg-amber-800 text-white text-center py-4 rounded-xl font-semibold transition"
               >
                 Send Email

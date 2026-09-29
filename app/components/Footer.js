@@ -160,10 +160,10 @@ export default function Footer() {
                 </p>
 
                 <a
-                  href="mailto:info@allahabadlawpublications.com"
+                  href="mailto:info@allahabadlawpublications.co.in"
                   className="hover:text-amber-400 transition"
                 >
-                  info@allahabadlawpublications.com
+                  info@allahabadlawpublications.co.in
                 </a>
               </div>
 
