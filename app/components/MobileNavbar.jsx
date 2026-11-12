@@ -1,8 +1,10 @@
+
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import CartButton from "./CartButton";
+import AuthButton from "./AuthButton";
 
 export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
@@ -63,6 +65,8 @@ export default function MobileNavbar() {
               {item.name}
             </Link>
           ))}
+
+          <AuthButton mobile onClick={() => setOpen(false)} />
 
           <CartButton mobile onClick={() => setOpen(false)} />
         </nav>

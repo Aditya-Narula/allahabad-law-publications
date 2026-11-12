@@ -1,5 +1,7 @@
+
 import Link from "next/link";
 import CartButton from "./CartButton";
+import AuthButton from "./AuthButton";
 
 export default function DesktopNavbar() {
   return (
@@ -45,6 +47,8 @@ export default function DesktopNavbar() {
       >
         Browse Books
       </Link>
+
+      <AuthButton />
 
       <CartButton />
     </nav>
