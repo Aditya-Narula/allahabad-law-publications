@@ -48,9 +48,16 @@ export default function DesktopNavbar() {
         Browse Books
       </Link>
 
-      <AuthButton />
+      <Link
+  href="/account"
+  className="px-4 py-2 rounded-xl hover:bg-amber-100"
+>
+  My Account
+</Link>
 
-      <CartButton />
+<AuthButton />
+
+<CartButton />
     </nav>
   );
 }

@@ -10,12 +10,13 @@ export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { name: "Home", href: "/" },
-    { name: "Publications", href: "/publications" },
-    { name: "Search", href: "/search" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ];
+  { name: "Home", href: "/" },
+  { name: "Publications", href: "/publications" },
+  { name: "Search", href: "/search" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+  { name: "My Account", href: "/account" },
+];
 
   return (
     <>
