@@ -19,9 +19,12 @@ export default function Home() {
       <section className="bg-gradient-to-b from-amber-50 via-white to-white py-28">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <div className="flex justify-center mb-8">
-  <img
+  <Image
   src="/logo.png"
   alt="Allahabad Law Publications Logo"
+  width={144}
+  height={144}
+  priority
   className="w-36 h-36 mx-auto drop-shadow-lg"
 />
 </div>
@@ -370,7 +373,7 @@ export default function Home() {
           1000+ Publications
         </h3>
         <p className="text-gray-600">
-          One of India's largest collections of legal books.
+          One of India&apos;s largest collections of legal books.
         </p>
       </div>
 

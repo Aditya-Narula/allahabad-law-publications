@@ -1,3 +1,5 @@
+
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -12,9 +14,11 @@ export default function Footer() {
 
           <div>
 
-            <img
+            <Image
               src="/logo.png"
               alt="Allahabad Law Publications"
+              width={64}
+              height={64}
               className="w-16 h-16 mb-5"
             />
 

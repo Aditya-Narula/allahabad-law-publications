@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -33,33 +34,61 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isReady, setIsReady] = useState(false);
 
+  // Load the saved cart from browser storage.
   useEffect(() => {
-    try {
-      const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+    let isActive = true;
 
-      if (savedCart) {
-        const parsedCart = JSON.parse(savedCart);
+    async function loadCart() {
+      // Defer state updates until after the effect has completed.
+      await Promise.resolve();
 
-        if (Array.isArray(parsedCart)) {
-          const validItems = parsedCart.filter(
-            (item) =>
-              item &&
-              item.slug &&
-              item.englishTitle &&
-              Number(item.quantity) > 0
-          );
+      if (!isActive) {
+        return;
+      }
 
-          setCartItems(validItems);
+      try {
+        const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+
+        if (savedCart) {
+          const parsedCart = JSON.parse(savedCart);
+
+          if (Array.isArray(parsedCart)) {
+            const validItems = parsedCart.filter(
+              (item) =>
+                item &&
+                item.slug &&
+                item.englishTitle &&
+                Number(item.quantity) > 0
+            );
+
+            if (isActive) {
+              setCartItems(validItems);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Unable to load the shopping cart:", error);
+
+        try {
+          localStorage.removeItem(CART_STORAGE_KEY);
+        } catch (storageError) {
+          console.error("Unable to clear invalid cart storage:", storageError);
+        }
+      } finally {
+        if (isActive) {
+          setIsReady(true);
         }
       }
-    } catch (error) {
-      console.error("Unable to load the shopping cart:", error);
-      localStorage.removeItem(CART_STORAGE_KEY);
-    } finally {
-      setIsReady(true);
     }
+
+    loadCart();
+
+    return () => {
+      isActive = false;
+    };
   }, []);
 
+  // Save cart changes to browser storage.
   useEffect(() => {
     if (!isReady) {
       return;
