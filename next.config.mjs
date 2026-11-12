@@ -1,6 +1,13 @@
+
 /** @type {import("next").NextConfig} */
 
 const isDevelopment = process.env.NODE_ENV === "development";
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+
+const supabaseOrigin = supabaseUrl
+  ? new URL(supabaseUrl).origin
+  : "";
 
 const contentSecurityPolicy = `
   default-src 'self';
@@ -14,7 +21,7 @@ const contentSecurityPolicy = `
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: blob:;
   font-src 'self' data:;
-  connect-src 'self' ${
+  connect-src 'self' ${supabaseOrigin} ${
     isDevelopment ? "ws: wss:" : ""
   };
   media-src 'self';
