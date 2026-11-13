@@ -41,19 +41,24 @@ export default async function AccountPage() {
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          <section className="rounded-xl bg-white p-6 shadow-sm">
-            <h2 className="text-xl font-semibold text-gray-900">
-              My Orders
-            </h2>
+          
+<section className="rounded-xl bg-white p-6 shadow-sm">
+  <h2 className="text-xl font-semibold text-gray-900">
+    My Orders
+  </h2>
 
-            <p className="mt-3 text-sm text-gray-600">
-              View your order history, invoices and delivery status.
-            </p>
+  <p className="mt-3 text-sm text-gray-600">
+    View your order history, payment status and delivery updates.
+  </p>
 
-            <p className="mt-5 text-sm font-medium text-amber-700">
-              Coming soon
-            </p>
-          </section>
+  <Link
+    href="/account/orders"
+    className="mt-5 inline-block rounded-lg bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800"
+  >
+    View My Orders
+  </Link>
+</section>
+
 
           
 <section className="rounded-xl bg-white p-6 shadow-sm">
