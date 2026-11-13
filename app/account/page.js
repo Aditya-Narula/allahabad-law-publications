@@ -55,19 +55,26 @@ export default async function AccountPage() {
             </p>
           </section>
 
-          <section className="rounded-xl bg-white p-6 shadow-sm">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Saved Addresses
-            </h2>
+          
+<section className="rounded-xl bg-white p-6 shadow-sm">
+  <h2 className="text-xl font-semibold text-gray-900">
+    Saved Addresses
+  </h2>
 
-            <p className="mt-3 text-sm text-gray-600">
-              Manage your delivery addresses for future purchases.
-            </p>
+  <p className="mt-3 text-sm text-gray-600">
+    Add, edit and manage your delivery addresses.
+  </p>
 
-            <p className="mt-5 text-sm font-medium text-amber-700">
-              Coming soon
-            </p>
-          </section>
+  <Link
+    href="/account/addresses"
+    className="mt-5 inline-block rounded-lg bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800"
+  >
+    Manage Addresses
+  </Link>
+</section>
+
+
+            
 
           <section className="rounded-xl bg-white p-6 shadow-sm">
             <h2 className="text-xl font-semibold text-gray-900">
