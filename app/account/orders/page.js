@@ -96,8 +96,13 @@ export default async function OrdersPage() {
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <h2 className="text-lg font-bold text-gray-900">
-                      Order #{order.id}
-                    </h2>
+  <Link
+    href={`/account/orders/${order.id}`}
+    className="text-blue-900 hover:text-amber-700 hover:underline"
+  >
+    Order #{order.id}
+  </Link>
+</h2>
 
                     <p className="mt-1 text-sm text-gray-500">
                       Placed on {formatDate(order.created_at)}
