@@ -5,6 +5,11 @@ import AddToCartButton from "./AddToCartButton";
 export default function RelatedBookCard({ slug, book }) {
   const discount = book.discountPercent || 0;
 
+  const unavailable =
+  book.unavailable === true ||
+  Number(book.stock) <= 0 ||
+  Number(book.salePrice) <= 0;
+
   return (
     <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
       <div className="relative bg-gradient-to-b from-gray-50 to-white h-72 flex items-center justify-center p-6">
@@ -61,9 +66,15 @@ export default function RelatedBookCard({ slug, book }) {
             </div>
           )}
 
-          <div className="text-3xl font-bold text-amber-700 mt-1">
-            ₹{book.salePrice}
-          </div>
+          <div className="mt-1 text-3xl font-bold text-amber-700">
+  {unavailable ? "Price Unavailable" : `₹${book.salePrice}`}
+</div>
+
+{unavailable && (
+  <p className="mt-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm font-bold text-red-700">
+    Unavailable — Cannot Be Ordered
+  </p>
+)}
         </div>
 
         <div className="mt-6 grid gap-3">

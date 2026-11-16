@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useCart } from "@/app/context/CartContext";
 import {
   FREE_POSTAL_THRESHOLD,
@@ -10,25 +10,22 @@ import {
   calculatePostalCharge,
 } from "@/app/config/shipping";
 
-const initialForm = {
-  name: "",
-  mobile: "",
-  address: "",
-  city: "",
-  state: "",
-  pinCode: "",
-  email: "",
-  notes: "",
-};
 
 function formatPrice(value) {
-  return new Intl.NumberFormat("en-IN").format(Number(value) || 0);
+  return new Intl.NumberFormat("en-IN", {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 0,
+  }).format(Number(value) || 0);
 }
+
 
 export default function CartPage() {
   const {
     cartItems,
     isReady,
+    cartVerified,
+    cartVerificationError,
+    syncCart,
     increaseQuantity,
     decreaseQuantity,
     setItemQuantity,
@@ -39,8 +36,16 @@ export default function CartPage() {
     totalSavings,
   } = useCart();
 
-  const [form, setForm] = useState(initialForm);
-  const [errors, setErrors] = useState({});
+  const cartSignature = JSON.stringify(
+    cartItems.map(({ slug, quantity, stock, salePrice }) => ({
+      slug, quantity, stock, salePrice,
+    }))
+  );
+
+  useEffect(() => {
+    if (!isReady) return;
+    void syncCart();
+  }, [isReady, cartSignature, syncCart]);
 
   const postalCharge = calculatePostalCharge(cartTotal);
   const grandTotal = cartTotal + postalCharge;
@@ -49,152 +54,6 @@ export default function CartPage() {
     cartTotal < FREE_POSTAL_THRESHOLD
       ? FREE_POSTAL_THRESHOLD - cartTotal
       : 0;
-
-  function handleChange(event) {
-    const { name, value } = event.target;
-
-    setForm((currentForm) => ({
-      ...currentForm,
-      [name]: value,
-    }));
-
-    setErrors((currentErrors) => ({
-      ...currentErrors,
-      [name]: "",
-    }));
-  }
-
-  function validateForm() {
-    const newErrors = {};
-
-    if (!form.name.trim()) {
-      newErrors.name = "Please enter the customer name.";
-    }
-
-    const mobileDigits = form.mobile.replace(/\D/g, "");
-
-    if (!mobileDigits) {
-      newErrors.mobile = "Please enter the mobile number.";
-    } else if (mobileDigits.length !== 10) {
-      newErrors.mobile =
-        "Please enter a valid 10-digit mobile number.";
-    }
-
-    if (!form.address.trim()) {
-      newErrors.address =
-        "Please enter the full delivery address.";
-    }
-
-    if (!form.city.trim()) {
-      newErrors.city = "Please enter the city.";
-    }
-
-    if (!form.state.trim()) {
-      newErrors.state = "Please enter the state.";
-    }
-
-    if (!/^\d{6}$/.test(form.pinCode.trim())) {
-      newErrors.pinCode =
-        "Please enter a valid 6-digit PIN code.";
-    }
-
-    if (
-      form.email.trim() &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())
-    ) {
-      newErrors.email =
-        "Please enter a valid email address.";
-    }
-
-    setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0;
-  }
-
-  function createWhatsAppMessage() {
-    const orderLines = cartItems
-      .map((item, index) => {
-        const itemTotal =
-          item.salePrice * item.quantity;
-
-        return `${index + 1}. ${item.englishTitle}
-Edition: ${item.edition || "Not specified"}
-Quantity: ${item.quantity}
-Price per copy: ₹${formatPrice(item.salePrice)}
-Item total: ₹${formatPrice(itemTotal)}`;
-      })
-      .join("\n\n");
-
-    const postalLine =
-      postalCharge > 0
-        ? `Postal charges: ₹${formatPrice(postalCharge)}`
-        : "Postal charges: FREE";
-
-    return `Hello Allahabad Law Publications,
-
-I would like to place the following order:
-
-${orderLines}
-
-ORDER SUMMARY
-Total books: ${totalQuantity}
-Books subtotal after discount: ₹${formatPrice(cartTotal)}
-Total savings: ₹${formatPrice(totalSavings)}
-${postalLine}
-TOTAL PAYABLE: ₹${formatPrice(grandTotal)}
-
-Postal charge policy:
-₹${POSTAL_CHARGE} postal charge applies when the discounted order value is below ₹${FREE_POSTAL_THRESHOLD}. Postal delivery is free on orders of ₹${FREE_POSTAL_THRESHOLD} or more.
-
-CUSTOMER DETAILS
-Name: ${form.name.trim()}
-Mobile: ${form.mobile.trim()}
-Address: ${form.address.trim()}
-City: ${form.city.trim()}
-State: ${form.state.trim()}
-PIN Code: ${form.pinCode.trim()}
-Email: ${form.email.trim() || "Not provided"}
-Order Notes: ${form.notes.trim() || "None"}
-
-Please confirm availability and payment details.
-
-Thank you.`;
-  }
-
-  function handleWhatsAppOrder(event) {
-    event.preventDefault();
-
-    if (cartItems.length === 0) {
-      return;
-    }
-
-    if (!validateForm()) {
-      const firstErrorField =
-        document.querySelector(
-          "[data-form-error='true']"
-        );
-
-      firstErrorField?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-
-      return;
-    }
-
-    const message = createWhatsAppMessage();
-
-    const whatsappUrl =
-      `https://wa.me/919235650006?text=${encodeURIComponent(
-        message
-      )}`;
-
-    window.open(
-      whatsappUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-  }
 
   if (!isReady) {
     return (
@@ -222,8 +81,8 @@ Thank you.`;
             </h1>
 
             <p className="mt-4 text-lg text-gray-600">
-              Add legal books to your cart and place
-              the entire order through WhatsApp.
+              Add legal books to your cart and proceed
+              through secure checkout once ordering is enabled.
             </p>
 
             <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
@@ -266,9 +125,10 @@ Thank you.`;
           </h1>
 
           <p className="mt-3 text-gray-600">
-            Review quantities, enter delivery details
-            and send the complete order through WhatsApp.
-          </p>
+  Review your selected publications and quantities,
+  then proceed to secure checkout to select your
+  delivery address and complete your purchase.
+</p>
         </div>
 
         {/* POSTAL POLICY NOTICE */}
@@ -396,12 +256,9 @@ Thank you.`;
 
                         <button
                           type="button"
-                          onClick={() =>
-                            increaseQuantity(
-                              item.slug
-                            )
-                          }
-                          className="h-11 w-11 rounded-lg border bg-white text-xl font-bold hover:border-amber-600 hover:text-amber-700"
+                          onClick={() => increaseQuantity(item.slug)}
+                          disabled={item.quantity >= item.stock}
+                          className="h-11 w-11 rounded-lg border bg-white text-xl font-bold hover:border-amber-600 hover:text-amber-700 disabled:cursor-not-allowed disabled:opacity-40"
                           aria-label={`Increase quantity of ${item.englishTitle}`}
                         >
                           +
@@ -556,236 +413,59 @@ Thank you.`;
               </div>
             </div>
 
-            <form
-              onSubmit={
-                handleWhatsAppOrder
-              }
-              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
-            >
 
-              <h2 className="text-2xl font-bold text-gray-900">
-                Delivery Details
-              </h2>
+<div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+  <h2 className="text-xl font-bold text-gray-900">
+    Secure Checkout
+  </h2>
 
-              <p className="mt-2 text-sm text-gray-600">
-                Fields marked with * are compulsory.
-              </p>
+  <p className="mt-3 text-sm leading-6 text-gray-600">
+    Orders will be placed directly through the Allahabad
+    Law Publications website. You will be able to select
+    a saved delivery address and review your order before
+    confirming it.
+  </p>
 
-              <div className="mt-6 space-y-5">
 
-                <FormField
-                  label="Customer Name"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  error={errors.name}
-                  required
-                />
+{cartVerificationError && (
+    <p role="status" className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+      {cartVerificationError}
+    </p>
+  )}
 
-                <FormField
-                  label="Mobile Number"
-                  name="mobile"
-                  type="tel"
-                  inputMode="numeric"
-                  value={form.mobile}
-                  onChange={handleChange}
-                  error={errors.mobile}
-                  required
-                />
+  <button
+    type="button"
+    onClick={() => void syncCart()}
+    className="mt-4 w-full rounded-xl border border-amber-600 px-4 py-3 font-semibold text-amber-800"
+  >
+    Refresh prices and availability
+  </button>
 
-                <FormTextArea
-                  label="Full Delivery Address"
-                  name="address"
-                  value={form.address}
-                  onChange={handleChange}
-                  error={errors.address}
-                  required
-                />
+  {cartVerified ? (
+    <Link
+      href="/checkout"
+      className="mt-4 block w-full rounded-xl bg-amber-600 px-6 py-4 text-center text-lg font-bold text-white shadow-sm transition hover:bg-amber-700"
+    >
+      Proceed to Secure Checkout
+    </Link>
+  ) : (
+    <p className="mt-4 rounded-xl bg-gray-100 p-4 text-center font-semibold text-gray-700">
+      Checking current stock and prices. Use Refresh if verification fails.
+    </p>
+  )}
 
-                <div className="grid gap-5 sm:grid-cols-2">
 
-                  <FormField
-                    label="City"
-                    name="city"
-                    value={form.city}
-                    onChange={handleChange}
-                    error={errors.city}
-                    required
-                  />
+  <p className="mt-3 text-center text-xs text-gray-500">
+    WhatsApp assistance will be available after successful
+    order placement.
+  </p>
+</div>
 
-                  <FormField
-                    label="State"
-                    name="state"
-                    value={form.state}
-                    onChange={handleChange}
-                    error={errors.state}
-                    required
-                  />
-
-                </div>
-
-                <FormField
-                  label="PIN Code"
-                  name="pinCode"
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={6}
-                  value={form.pinCode}
-                  onChange={handleChange}
-                  error={errors.pinCode}
-                  required
-                />
-
-                <FormField
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  error={errors.email}
-                />
-
-                <FormTextArea
-                  label="Order Notes"
-                  name="notes"
-                  value={form.notes}
-                  onChange={handleChange}
-                  error={errors.notes}
-                  placeholder="Any special instructions or queries"
-                />
-
-              </div>
-
-              <button
-                type="submit"
-                className="mt-7 w-full rounded-xl bg-green-600 py-4 text-lg font-bold text-white shadow-sm transition hover:bg-green-700"
-              >
-                📱 Order Entire Cart on WhatsApp
-              </button>
-
-              <p className="mt-3 text-center text-xs leading-5 text-gray-500">
-                Your order details will open in
-                WhatsApp for your review before
-                sending.
-              </p>
-
-            </form>
 
           </aside>
 
         </div>
       </div>
     </main>
-  );
-}
-
-function FormField({
-  label,
-  name,
-  value,
-  onChange,
-  error,
-  required = false,
-  type = "text",
-  inputMode,
-  maxLength,
-}) {
-  return (
-    <div
-      data-form-error={
-        error ? "true" : "false"
-      }
-    >
-
-      <label
-        htmlFor={name}
-        className="mb-2 block text-sm font-semibold text-gray-800"
-      >
-        {label}
-
-        {required && (
-          <span className="text-red-600">
-            {" "}
-            *
-          </span>
-        )}
-      </label>
-
-      <input
-        id={name}
-        name={name}
-        type={type}
-        inputMode={inputMode}
-        maxLength={maxLength}
-        value={value}
-        onChange={onChange}
-        className={`w-full rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-amber-200 ${
-          error
-            ? "border-red-500"
-            : "border-gray-300 focus:border-amber-600"
-        }`}
-      />
-
-      {error && (
-        <p className="mt-2 text-sm font-medium text-red-600">
-          {error}
-        </p>
-      )}
-
-    </div>
-  );
-}
-
-function FormTextArea({
-  label,
-  name,
-  value,
-  onChange,
-  error,
-  required = false,
-  placeholder = "",
-}) {
-  return (
-    <div
-      data-form-error={
-        error ? "true" : "false"
-      }
-    >
-
-      <label
-        htmlFor={name}
-        className="mb-2 block text-sm font-semibold text-gray-800"
-      >
-        {label}
-
-        {required && (
-          <span className="text-red-600">
-            {" "}
-            *
-          </span>
-        )}
-      </label>
-
-      <textarea
-        id={name}
-        name={name}
-        rows={4}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className={`w-full resize-y rounded-xl border px-4 py-3 outline-none transition focus:ring-2 focus:ring-amber-200 ${
-          error
-            ? "border-red-500"
-            : "border-gray-300 focus:border-amber-600"
-        }`}
-      />
-
-      {error && (
-        <p className="mt-2 text-sm font-medium text-red-600">
-          {error}
-        </p>
-      )}
-
-    </div>
   );
 }

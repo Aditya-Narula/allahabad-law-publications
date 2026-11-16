@@ -1,16 +1,45 @@
+import { getWebsiteStock } from "@/lib/inventory/getWebsiteStock";
 import { books } from "@/app/data/books";
 import RelatedBookCard from "@/app/components/RelatedBookCard";
 import Image from "next/image";
 import Link from "next/link";
-export default function Home() {
+export default async function Home() {
 
-  const featuredBooks = Object.entries(books).filter(
-    ([, book]) => book.featured === true
+  const homepageSlugs = Object.entries(books)
+    .filter(([, book]) => book.featured || book.newArrival)
+    .map(([slug]) => slug);
+
+  const stockMap = await getWebsiteStock(homepageSlugs);
+
+  const homepageBooks = Object.fromEntries(
+    homepageSlugs.map((slug) => {
+      const book = books[slug];
+      const currentStock = stockMap[slug] ?? 0;
+
+      return [
+        slug,
+        {
+          ...book,
+          stock: currentStock,
+          unavailable:
+            book.unavailable === true ||
+            currentStock <= 0,
+        },
+      ];
+    })
   );
 
-  const newArrivalBooks = Object.entries(books).filter(
-    ([, book]) => book.newArrival === true
+  const websiteStock = await getWebsiteStock(
+    Object.values(books).map((book) => book.slug)
   );
+
+  const featuredBooks = Object.entries(homepageBooks).filter(
+  ([, book]) => book.featured === true
+);
+
+const newArrivalBooks = Object.entries(homepageBooks).filter(
+  ([, book]) => book.newArrival === true
+);
 
   return (
     <main className="min-h-screen bg-white text-gray-900">

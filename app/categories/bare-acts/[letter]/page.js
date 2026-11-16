@@ -1,10 +1,11 @@
 
 import BookCard from "@/app/components/BookCard";
 import Link from "next/link";
-import { books } from "@/app/data/books";
+import { getCatalogWithStock } from "@/lib/inventory/getCatalogWithStock";
 
 export default async function LetterPage({ params }) {
   const { letter } = await params;
+  const books = await getCatalogWithStock();
 
   const filteredBooks = Object.entries(books).filter(
     ([, book]) =>

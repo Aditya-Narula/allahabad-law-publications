@@ -1,15 +1,17 @@
 import Link from "next/link";
 import BookCard from "@/app/components/BookCard";
-import { books } from "@/app/data/books";
+import { getCatalogWithStock } from "@/lib/inventory/getCatalogWithStock";
 
-export default function CategoryPage({
+export default async function CategoryPage({
   title,
   filterFn,
 }) {
 
-  const categoryBooks = Object.entries(books).filter(
-    ([, book]) => filterFn(book)
-  );
+  const books = await getCatalogWithStock();
+
+const categoryBooks = Object.entries(books).filter(
+  ([, book]) => filterFn(book)
+);
 
   const sortedBooks = [...categoryBooks].sort((a, b) =>
   a[1].englishTitle.localeCompare(b[1].englishTitle)

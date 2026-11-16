@@ -1,18 +1,33 @@
 
 "use client";
 
+import { books } from "@/app/data/books";
+
 import {
   createContext,
   useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
 const CartContext = createContext(null);
 
 const CART_STORAGE_KEY = "alp-shopping-cart";
+
+
+function isBookAvailable(book) {
+  return (
+    book &&
+    book.unavailable !== true &&
+    Number(book.mrp) > 0 &&
+    Number(book.salePrice) > 0 &&
+    Number(book.stock) > 0
+  );
+}
+
 
 function createCartItem(slug, book, quantity = 1) {
   return {
@@ -26,6 +41,7 @@ function createCartItem(slug, book, quantity = 1) {
     mrp: Number(book.mrp) || 0,
     salePrice: Number(book.salePrice) || 0,
     discountPercent: Number(book.discountPercent) || 0,
+    stock: Math.max(0, Math.floor(Number(book.stock) || 0)),
     quantity: Math.max(1, Number(quantity) || 1),
   };
 }
@@ -33,6 +49,15 @@ function createCartItem(slug, book, quantity = 1) {
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isReady, setIsReady] = useState(false);
+  const [cartVerified, setCartVerified] = useState(false);
+  const [cartVerificationError, setCartVerificationError] = useState("");
+
+const syncSequence = useRef(0);
+const cartRef = useRef(cartItems);
+
+useEffect(() => {
+  cartRef.current = cartItems;
+}, [cartItems]);
 
   // Load the saved cart from browser storage.
   useEffect(() => {
@@ -53,13 +78,36 @@ export function CartProvider({ children }) {
           const parsedCart = JSON.parse(savedCart);
 
           if (Array.isArray(parsedCart)) {
-            const validItems = parsedCart.filter(
-              (item) =>
-                item &&
-                item.slug &&
-                item.englishTitle &&
-                Number(item.quantity) > 0
-            );
+
+const validItems = parsedCart.flatMap((item) => {
+  if (!item || typeof item.slug !== "string") {
+    return [];
+  }
+
+  const currentBook = books[item.slug];
+
+  if (!isBookAvailable(currentBook)) {
+    return [];
+  }
+
+  const requestedQuantity = Math.floor(
+    Number(item.quantity)
+  );
+
+  if (!Number.isFinite(requestedQuantity) || requestedQuantity <= 0) {
+    return [];
+  }
+
+  const quantity = Math.min(
+    requestedQuantity,
+    Number(currentBook.stock)
+  );
+
+  return [
+    createCartItem(item.slug, currentBook, quantity),
+  ];
+});
+
 
             if (isActive) {
               setCartItems(validItems);
@@ -102,6 +150,14 @@ export function CartProvider({ children }) {
   }, [cartItems, isReady]);
 
   const addItem = useCallback((slug, book, quantity = 1) => {
+    setCartVerified(false);
+    syncSequence.current += 1;
+   const currentBook = books[slug];
+   const visibleBook = isBookAvailable(book) ? book : currentBook;
+
+if (!isBookAvailable(visibleBook) || !isBookAvailable(currentBook)) {
+  return;
+}
     setCartItems((currentItems) => {
       const existingItem = currentItems.find((item) => item.slug === slug);
 
@@ -110,23 +166,44 @@ export function CartProvider({ children }) {
           item.slug === slug
             ? {
                 ...item,
-                quantity: item.quantity + Math.max(1, Number(quantity) || 1),
+                stock: Math.min(Number(currentBook.stock), Number(visibleBook.stock)),
+                quantity: Math.min(
+  Number(currentBook.stock),
+  Number(visibleBook.stock),
+  item.quantity + Math.max(1, Math.floor(Number(quantity) || 1))
+),
               }
             : item
         );
       }
 
-      return [...currentItems, createCartItem(slug, book, quantity)];
+      return [
+  ...currentItems,
+  createCartItem(
+    slug,
+    visibleBook,
+    Math.min(
+      Number(currentBook.stock),
+      Number(visibleBook.stock),
+      Math.max(1, Math.floor(Number(quantity) || 1))
+    )
+  ),
+];
     });
   }, []);
 
   const increaseQuantity = useCallback((slug) => {
+    setCartVerified(false);
+    syncSequence.current += 1;
     setCartItems((currentItems) =>
       currentItems.map((item) =>
         item.slug === slug
           ? {
               ...item,
-              quantity: item.quantity + 1,
+              quantity: Math.min(
+                Math.max(0, Number(item.stock) || 0),
+                item.quantity + 1
+              ),
             }
           : item
       )
@@ -134,6 +211,8 @@ export function CartProvider({ children }) {
   }, []);
 
   const decreaseQuantity = useCallback((slug) => {
+    setCartVerified(false);
+    syncSequence.current += 1;
     setCartItems((currentItems) =>
       currentItems
         .map((item) =>
@@ -149,6 +228,8 @@ export function CartProvider({ children }) {
   }, []);
 
   const setItemQuantity = useCallback((slug, quantity) => {
+    setCartVerified(false);
+    syncSequence.current += 1;
     const numericQuantity = Number(quantity);
 
     if (!Number.isFinite(numericQuantity)) {
@@ -168,7 +249,10 @@ export function CartProvider({ children }) {
         item.slug === slug
           ? {
               ...item,
-              quantity: Math.floor(numericQuantity),
+              quantity: Math.min(
+                Math.max(0, Number(item.stock) || 0),
+                Math.floor(numericQuantity)
+              ),
             }
           : item
       )
@@ -176,12 +260,16 @@ export function CartProvider({ children }) {
   }, []);
 
   const removeItem = useCallback((slug) => {
+    setCartVerified(false);
+    syncSequence.current += 1;
     setCartItems((currentItems) =>
       currentItems.filter((item) => item.slug !== slug)
     );
   }, []);
 
   const clearCart = useCallback(() => {
+    setCartVerified(false);
+    syncSequence.current += 1;
     setCartItems([]);
   }, []);
 
@@ -192,6 +280,74 @@ export function CartProvider({ children }) {
     },
     [cartItems]
   );
+
+  const syncCart = useCallback(async () => {
+    const seq = ++syncSequence.current;
+    const snapshot = cartRef.current;
+    const slugs = [...new Set(snapshot.map((item) => item.slug))];
+    setCartVerified(false);
+    setCartVerificationError("");
+
+    if (slugs.length === 0) {
+      setCartVerified(true);
+      return true;
+    }
+
+    try {
+      const res = await fetch("/api/cart/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slugs }),
+        cache: "no-store",
+      });
+      const result = await res.json();
+      if (!res.ok || !Array.isArray(result.books)) {
+        throw new Error(result.error || "Cart verification is unavailable.");
+      }
+
+      if (seq !== syncSequence.current) return false;
+      const databaseBooks = new Map(result.books.map((book) => [book.slug, book]));
+      const updated = snapshot.flatMap((item) => {
+        const db = databaseBooks.get(item.slug);
+        const local = books[item.slug];
+        if (!local || !db) return [];
+        const stock = Number(db.stock);
+        const price = Number(db.price);
+        if (
+          local.unavailable === true ||
+          !Number.isInteger(stock) || stock <= 0 ||
+          !Number.isFinite(price) || price <= 0
+        ) return [];
+        return [{
+          ...item,
+          stock,
+          salePrice: price,
+          quantity: Math.min(item.quantity, stock),
+        }];
+      });
+
+      const changed = updated.length !== snapshot.length || updated.some((item, i) =>
+        item.slug !== snapshot[i]?.slug ||
+        item.quantity !== snapshot[i]?.quantity ||
+        item.salePrice !== snapshot[i]?.salePrice ||
+        item.stock !== snapshot[i]?.stock
+      );
+      if (changed) setCartItems(updated);
+      setCartVerified(true);
+      if (updated.length !== snapshot.length || updated.some((item, i) =>
+        item.quantity !== snapshot[i]?.quantity || item.salePrice !== snapshot[i]?.salePrice
+      )) {
+        setCartVerificationError("Your cart was updated to match current prices and availability.");
+      }
+      return true;
+    } catch (error) {
+      if (seq === syncSequence.current) {
+        setCartVerified(false);
+        setCartVerificationError(error.message || "Cart verification failed.");
+      }
+      return false;
+    }
+  }, []);
 
   const totalQuantity = useMemo(
     () =>
@@ -232,6 +388,9 @@ export function CartProvider({ children }) {
     () => ({
       cartItems,
       isReady,
+      cartVerified,
+      cartVerificationError,
+      syncCart,
       addItem,
       increaseQuantity,
       decreaseQuantity,
@@ -246,6 +405,9 @@ export function CartProvider({ children }) {
     [
       cartItems,
       isReady,
+      cartVerified,
+      cartVerificationError,
+      syncCart,
       addItem,
       increaseQuantity,
       decreaseQuantity,

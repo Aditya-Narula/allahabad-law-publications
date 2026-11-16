@@ -19,6 +19,28 @@ export default function AddToCartButton({
 
   const quantity = getItemQuantity(slug);
 
+
+const unavailable =
+  book.unavailable === true ||
+  Number(book.stock) <= 0 ||
+  Number(book.salePrice) <= 0;
+
+if (unavailable) {
+  return (
+    <button
+      type="button"
+      disabled
+      aria-label={`${book.englishTitle} is unavailable`}
+      className={`w-full cursor-not-allowed rounded-xl border border-red-200 bg-red-50 font-semibold text-red-700 ${
+        compact ? "py-3" : "py-4"
+      }`}
+    >
+      Unavailable
+    </button>
+  );
+}
+
+
   if (!isReady) {
     return (
       <button
@@ -69,9 +91,10 @@ export default function AddToCartButton({
           </span>
 
           <button
-            type="button"
-            onClick={() => increaseQuantity(slug)}
-            className="h-10 w-10 rounded-lg border border-gray-300 bg-white text-xl font-bold text-gray-800 transition hover:border-amber-600 hover:text-amber-700"
+  type="button"
+  onClick={() => increaseQuantity(slug)}
+  disabled={quantity >= Number(book.stock)}
+            className="h-10 w-10 rounded-lg border border-gray-300 bg-white text-xl font-bold text-gray-800 transition hover:border-amber-600 hover:text-amber-700 disabled:cursor-not-allowed disabled:opacity-40"
             aria-label={`Increase quantity of ${book.englishTitle}`}
           >
             +

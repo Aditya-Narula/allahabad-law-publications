@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import RelatedBookCard from "@/app/components/RelatedBookCard";
 import AddToCartButton from "@/app/components/AddToCartButton";
+import { getWebsiteStock } from "@/lib/inventory/getWebsiteStock";
 
 export default async function BookPage({ params }) {
   const { slug } = await params;
-  const book = books[slug];
+  let book = books[slug];
 
   if (!book) {
     return (
@@ -27,15 +28,64 @@ export default async function BookPage({ params }) {
     );
   }
 
-  const discount = book.discountPercent || 0;
-  const savings = book.mrp - book.salePrice;
 
-  const relatedBooks = Object.entries(books)
+  // Retrieve the website stock allocation from Supabase.
+  // Missing database records are treated as unavailable.
+
+  // Identify related books before requesting inventory.
+  const relatedCandidates = Object.entries(books)
     .filter(
       ([key, relatedBook]) =>
         key !== slug && relatedBook.category === book.category
     )
     .slice(0, 3);
+
+  // Fetch main-book and related-book stock in one request.
+  const stockMap = await getWebsiteStock([
+    slug,
+    ...relatedCandidates.map(([relatedSlug]) => relatedSlug),
+  ]);
+
+  const currentStock = stockMap[slug] ?? 0;
+
+  book = {
+    ...book,
+    stock: currentStock,
+    unavailable:
+      book.unavailable === true ||
+      currentStock <= 0 ||
+      Number(book.salePrice) <= 0,
+  };
+
+
+
+    const discount = book.discountPercent || 0;
+  const savings = book.mrp - book.salePrice;
+
+  const unavailable =
+  book.unavailable === true ||
+  Number(book.stock) <= 0 ||
+  Number(book.salePrice) <= 0;
+
+
+  const relatedBooks = relatedCandidates.map(
+    ([relatedSlug, relatedBook]) => {
+      const relatedStock = stockMap[relatedSlug] ?? 0;
+
+      return [
+        relatedSlug,
+        {
+          ...relatedBook,
+          stock: relatedStock,
+          unavailable:
+            relatedBook.unavailable === true ||
+            Number(relatedBook.salePrice) <= 0 ||
+            relatedStock <= 0,
+        },
+      ];
+    }
+  );
+
 
   const categorySlug = book.category
     .toLowerCase()
@@ -287,33 +337,53 @@ export default async function BookPage({ params }) {
               <hr className="my-6" />
 
               <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
-                <p className="text-gray-500 text-lg">
-                  Maximum Retail Price
-                </p>
 
-                <p className="text-2xl text-gray-500 line-through">
-                  ₹{book.mrp}
-                </p>
+{unavailable ? (
+  <div className="space-y-4">
+    <p className="text-2xl font-bold text-gray-800">
+      Price Unavailable
+    </p>
 
-                <div className="flex flex-wrap items-center gap-4 mt-3">
-                  <span className="text-4xl md:text-5xl font-bold text-amber-700">
-                    ₹{book.salePrice}
-                  </span>
+    <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 font-bold text-red-700">
+      Unavailable — Cannot Be Ordered
+    </p>
 
-                  {discount > 0 && (
-                    <span className="bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
-                      {discount}% OFF
-                    </span>
-                  )}
-                </div>
+    <p className="text-sm text-gray-600">
+      This publication is currently unavailable for purchase.
+    </p>
+  </div>
+) : (
+  <>
+    <p className="text-lg text-gray-500">
+      Maximum Retail Price
+    </p>
 
-                <p className="mt-5 text-green-700 font-semibold">
-                  ✅ In Stock ({book.stock} Available)
-                </p>
+    <p className="text-2xl text-gray-500 line-through">
+      ₹{book.mrp}
+    </p>
 
-                <p className="mt-2 text-amber-700 font-semibold">
-                  💰 You Save ₹{savings}
-                </p>
+    <div className="mt-3 flex flex-wrap items-center gap-4">
+      <span className="text-4xl font-bold text-amber-700 md:text-5xl">
+        ₹{book.salePrice}
+      </span>
+
+      {discount > 0 && (
+        <span className="rounded-full bg-red-600 px-3 py-1 text-sm font-semibold text-white">
+          {discount}% OFF
+        </span>
+      )}
+    </div>
+
+    <p className="mt-5 font-semibold text-green-700">
+      In Stock ({book.stock} Available)
+    </p>
+
+    <p className="mt-2 font-semibold text-amber-700">
+      You Save ₹{savings}
+    </p>
+  </>
+)}
+
 
                 <div className="mt-4 rounded-xl border border-amber-200 bg-white p-4">
   <p className="text-sm font-semibold text-gray-800">

@@ -45,13 +45,19 @@ export const books = Object.fromEntries(
           )
         : 0;
 
-    return [
-      slug,
-      {
-        ...book,
-        discountPercent: validDiscountPercent,
-        salePrice,
-      },
-    ];
+
+const unavailable = mrp <= 0 || salePrice <= 0;
+
+return [
+  slug,
+  {
+    ...book,
+    discountPercent: validDiscountPercent,
+    salePrice,
+    stock: unavailable ? 0 : book.stock,
+    unavailable,
+  },
+];
+
   })
 );
